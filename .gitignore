@@ -18,6 +18,7 @@ demo/bin/windows/*
 !demo/bin/windows/.gitkeep
 !demo/bin/*.gdextension
 .sconsign*.dblite
+build/*
 
 # Ignore custom.py
 custom.py
@@ -56,3 +57,7 @@ compile_commands.json
 
 # Jetbrains
 .idea/
+
+# Python
+*__pycache__
+*.venv
