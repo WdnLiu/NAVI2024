@@ -4,8 +4,10 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
+var moving = 0  # 0 = idle, 1 = running
+var transition = false  # Whether a transition animation is playing
+
 func _physics_process(delta: float) -> void:
-	
 	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -20,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	# Flip the sprite based on direction
 	animated_sprite_2d.flip_h = direction < 0
 
+	# Update animations
 	update_animation(direction)
 
 	# Set horizontal velocity
@@ -29,14 +32,34 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
+
 # Animation handling function
 func update_animation(direction: int) -> void:
-	if is_on_floor():
-		if direction == 0:  # No movement
-			animated_sprite_2d.play("idle")
-		else:  # Moving on the ground
-			animated_sprite_2d.play("run")
-	else:  # In the air
-		if animated_sprite_2d.animation != "jump":
-			animated_sprite_2d.play("jump")
+	if transition:
+		# If a transition animation is playing, wait for it to finish
+		if not animated_sprite_2d.is_playing():
+			transition = false
+			# After transition, set the correct looping animation
+			if moving == 0:
+				animated_sprite_2d.play("idle_combat")
+			elif moving == 1:
+				animated_sprite_2d.play("run")
+	else:
+		if is_on_floor():
+			if direction == 0:  # No movement
+				if moving == 1:  # Transition from run to idle
+					animated_sprite_2d.play("run_to_idle")
+					moving = 0
+					transition = true
+				elif animated_sprite_2d.animation != "idle_combat":  # Already idle
+					animated_sprite_2d.play("idle_combat")
+			else:  # Movement detected
+				if moving == 0:  # Transition from idle to run
+					animated_sprite_2d.play("idle_to_run")
+					moving = 1
+					transition = true
+				elif animated_sprite_2d.animation != "run":  # Already running
+					animated_sprite_2d.play("run")
+		else:  # In the air
+			if animated_sprite_2d.animation != "jump":
+				animated_sprite_2d.play("jump")

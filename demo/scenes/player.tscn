@@ -1,17 +1,28 @@
-[gd_scene load_steps=71 format=3 uid="uid://buwqq0fbfmxam"]
+[gd_scene load_steps=93 format=3 uid="uid://buwqq0fbfmxam"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_md3o7"]
 [ext_resource type="Texture2D" uid="uid://cwe4wgewhc0uw" path="res://assets/sprites/Idle/spr_casual_idle_0.png" id="2_4sdoa"]
+[ext_resource type="Texture2D" uid="uid://dbgtgbwdtxq4w" path="res://assets/sprites/IdleCombat/spr_idle_0.png" id="2_x7e2n"]
 [ext_resource type="Texture2D" uid="uid://bl8de1ptwr7ka" path="res://assets/sprites/Idle/spr_casual_idle_1.png" id="3_17rnu"]
+[ext_resource type="Texture2D" uid="uid://vjnu1tr4qvwh" path="res://assets/sprites/IdleCombat/spr_idle_1.png" id="3_babbx"]
 [ext_resource type="Texture2D" uid="uid://cw0gxydrevncl" path="res://assets/sprites/Idle/spr_casual_idle_2.png" id="4_ex4o6"]
+[ext_resource type="Texture2D" uid="uid://dmmqooomfdw5e" path="res://assets/sprites/IdleCombat/spr_idle_2.png" id="4_unlj4"]
+[ext_resource type="Texture2D" uid="uid://d1dsh4ultb1cy" path="res://assets/sprites/IdleCombat/spr_idle_3.png" id="5_afywf"]
 [ext_resource type="Texture2D" uid="uid://7pvwubaasihq" path="res://assets/sprites/Idle/spr_casual_idle_3.png" id="5_bx66o"]
+[ext_resource type="Texture2D" uid="uid://cpbcfalgneted" path="res://assets/sprites/IdleCombat/spr_idle_4.png" id="6_21057"]
 [ext_resource type="Texture2D" uid="uid://bx4b8vgw3c8mu" path="res://assets/sprites/Idle/spr_casual_idle_4.png" id="6_k3qyh"]
+[ext_resource type="Texture2D" uid="uid://du4j8ofa81rxy" path="res://assets/sprites/IdleCombat/spr_idle_5.png" id="7_0muc4"]
 [ext_resource type="Texture2D" uid="uid://cng68nj77ygy7" path="res://assets/sprites/Idle/spr_casual_idle_6.png" id="7_lut26"]
 [ext_resource type="Texture2D" uid="uid://cx84s0e3iphmv" path="res://assets/sprites/Idle/spr_casual_idle_7.png" id="8_qps0d"]
+[ext_resource type="Texture2D" uid="uid://cujw8n6378156" path="res://assets/sprites/IdleCombat/spr_idle_6.png" id="8_xuiw1"]
 [ext_resource type="Texture2D" uid="uid://b7a131hyt0nn0" path="res://assets/sprites/Idle/spr_casual_idle_8.png" id="9_fskqa"]
+[ext_resource type="Texture2D" uid="uid://c71jcma5uckgv" path="res://assets/sprites/IdleCombat/spr_idle_7.png" id="9_ufppm"]
 [ext_resource type="Texture2D" uid="uid://c6k84fua50nfl" path="res://assets/sprites/Idle/spr_casual_idle_9.png" id="10_c4iqn"]
+[ext_resource type="Texture2D" uid="uid://cwkf3u0dtdelm" path="res://assets/sprites/IdleCombat/spr_idle_8.png" id="10_ft6mw"]
 [ext_resource type="Texture2D" uid="uid://blutk6dlhe26e" path="res://assets/sprites/Idle/spr_casual_idle_10.png" id="11_bg4q2"]
+[ext_resource type="Texture2D" uid="uid://bau7jkrpe0u07" path="res://assets/sprites/IdleCombat/spr_idle_9.png" id="11_fuwnc"]
 [ext_resource type="Texture2D" uid="uid://c37ik525soy18" path="res://assets/sprites/Run/spr_idle_to_run_0.png" id="11_o7ohm"]
+[ext_resource type="Texture2D" uid="uid://b3ydy0o030iss" path="res://assets/sprites/IdleCombat/spr_idle_10.png" id="12_fjyeq"]
 [ext_resource type="Texture2D" uid="uid://btvhkqpxf7f78" path="res://assets/sprites/Run/spr_idle_to_run_1.png" id="12_lo2gs"]
 [ext_resource type="Texture2D" uid="uid://83qc7jqradis" path="res://assets/sprites/Run/spr_idle_to_run_2.png" id="13_0y4lr"]
 [ext_resource type="Texture2D" uid="uid://cjahhqmyhywsc" path="res://assets/sprites/Run/spr_idle_to_run_3.png" id="14_ebif1"]
@@ -78,6 +89,50 @@ region = Rect2(0, 0, 29, 35)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4crof"]
 atlas = ExtResource("11_bg4q2")
 region = Rect2(0, 0, 29, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50ifv"]
+atlas = ExtResource("2_x7e2n")
+region = Rect2(0, 0, 36, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0bef"]
+atlas = ExtResource("3_babbx")
+region = Rect2(0, 0, 36, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svt6y"]
+atlas = ExtResource("4_unlj4")
+region = Rect2(0, 0, 36, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaj22"]
+atlas = ExtResource("5_afywf")
+region = Rect2(0, 0, 36, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko2bc"]
+atlas = ExtResource("6_21057")
+region = Rect2(0, 0, 36, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nemwk"]
+atlas = ExtResource("7_0muc4")
+region = Rect2(0, 0, 36, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jus1k"]
+atlas = ExtResource("8_xuiw1")
+region = Rect2(0, 0, 36, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm43q"]
+atlas = ExtResource("9_ufppm")
+region = Rect2(0, 0, 36, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2i0s"]
+atlas = ExtResource("10_ft6mw")
+region = Rect2(0, 0, 36, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2el5"]
+atlas = ExtResource("11_fuwnc")
+region = Rect2(0, 0, 36, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg7vp"]
+atlas = ExtResource("12_fjyeq")
+region = Rect2(0, 0, 36, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbtb7"]
 atlas = ExtResource("11_o7ohm")
@@ -213,6 +268,44 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_50ifv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0bef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svt6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaj22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko2bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nemwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jus1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm43q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2i0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2el5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vg7vp")
+}],
+"loop": true,
+"name": &"idle_combat",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xbtb7")
 }, {
 "duration": 1.0,
@@ -296,7 +389,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k3ctq")
 }],
-"loop": true,
+"loop": false,
 "name": &"run_to_idle",
 "speed": 10.0
 }]
@@ -310,8 +403,8 @@ script = ExtResource("1_md3o7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_w46dv")
-animation = &"jump"
-autoplay = "idle"
+animation = &"idle_combat"
+autoplay = "idle_combat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 4)
