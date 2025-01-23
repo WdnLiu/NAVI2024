@@ -408,5 +408,5 @@ animation = &"run_to_idle"
 autoplay = "idle_combat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5.5, 4)
+position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_e7cnv")
