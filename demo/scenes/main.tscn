@@ -10,9 +10,6 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_sbj2t")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 80)
 physics_material_override = SubResource("PhysicsMaterial_vjjfv")
@@ -22,3 +19,7 @@ shape = SubResource("WorldBoundaryShape2D_ic6tb")
 
 [node name="Player" parent="." instance=ExtResource("2_v3p2n")]
 position = Vector2(-2, 11)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(2, -11)
+zoom = Vector2(2, 2)
