@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
+# NOTE THAT PLAYER IS AT LAYET 2
+
 var moving = 0  # 0 = idle, 1 = running
 var transition = false  # Whether a transition animation is playing
 
