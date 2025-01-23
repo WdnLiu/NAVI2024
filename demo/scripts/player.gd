@@ -22,7 +22,10 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 
 	# Flip the sprite based on direction
-	animated_sprite_2d.flip_h = direction < 0
+	if direction > 0:
+		animated_sprite_2d.flip_h = false
+	if direction < 0:
+		animated_sprite_2d.flip_h = true
 
 	# Update animations
 	update_animation(direction)
