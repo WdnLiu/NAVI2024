@@ -1,50 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dllidwncsvj47"]
+[gd_scene load_steps=5 format=3 uid="uid://dllidwncsvj47"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_sbj2t"]
-[ext_resource type="Texture2D" uid="uid://co8h74to3hgaj" path="res://assets/sprites/knight.png" id="2_ql72j"]
-[ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="2_rfu73"]
+[ext_resource type="PackedScene" uid="uid://buwqq0fbfmxam" path="res://scenes/player.tscn" id="2_v3p2n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vjjfv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ic6tb"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2nxiv"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5mpc5"]
-atlas = ExtResource("2_ql72j")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l4ku3"]
-atlas = ExtResource("2_ql72j")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7rdv8"]
-atlas = ExtResource("2_ql72j")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4hso3"]
-atlas = ExtResource("2_ql72j")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2bvkq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5mpc5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l4ku3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7rdv8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4hso3")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_sbj2t")
@@ -59,17 +20,5 @@ physics_material_override = SubResource("PhysicsMaterial_vjjfv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_ic6tb")
 
-[node name="Player" type="Player" parent="."]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("2_rfu73")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, -0.836357)
-shape = SubResource("CircleShape2D_2nxiv")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(0, -5.48296)
-sprite_frames = SubResource("SpriteFrames_2bvkq")
-autoplay = "default"
-frame_progress = 0.707742
+[node name="Player" parent="." instance=ExtResource("2_v3p2n")]
+position = Vector2(-2, 11)
