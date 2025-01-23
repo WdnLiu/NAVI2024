@@ -14,20 +14,23 @@
 script = ExtResource("1_sbj2t")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, 80)
+position = Vector2(0, 2)
 physics_material_override = SubResource("PhysicsMaterial_vjjfv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_ic6tb")
 
 [node name="Player" parent="." instance=ExtResource("2_v3p2n")]
-position = Vector2(-2, 11)
+position = Vector2(-3, -80)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(2, -11)
-zoom = Vector2(2, 2)
+zoom = Vector2(2.5, 2.5)
+limit_bottom = 45
+position_smoothing_speed = 1.0
 
 [node name="killzone" parent="." instance=ExtResource("3_qgdui")]
+position = Vector2(0, -88)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 position = Vector2(0, 74)
