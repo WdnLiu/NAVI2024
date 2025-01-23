@@ -395,7 +395,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7cnv"]
-size = Vector2(10, 26)
+size = Vector2(11, 28)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -408,5 +408,5 @@ animation = &"run_to_idle"
 autoplay = "idle_combat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 4)
+position = Vector2(5.5, 4)
 shape = SubResource("RectangleShape2D_e7cnv")
