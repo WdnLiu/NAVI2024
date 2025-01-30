@@ -10,6 +10,7 @@ var moving = 0  # 0 = idle, 1 = running
 var transition = false  # Whether a transition animation is playing
 var was_on_floor = false
 var jump_buffer = false
+const acc = 10
 
 func _physics_process(delta: float) -> void:
 	
@@ -41,9 +42,17 @@ func _physics_process(delta: float) -> void:
 
 	# Update animations
 	update_animation(direction)
-
+	
+	# Check if the direction is changing
+	if direction != 0 and sign(velocity.x) != direction:
+		velocity.x = 0  # Hard stop before changing direction
+		
 	# Set horizontal velocity
-	velocity.x = direction * SPEED if direction != 0 else move_toward(velocity.x, 0, SPEED)
+	if direction != 0:
+		velocity.x = min(abs(velocity.x + direction * acc), SPEED) * direction
+	else:
+		velocity.x = 0
+		move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
 
