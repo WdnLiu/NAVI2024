@@ -7,7 +7,6 @@ extends CharacterBody2D
 const SPEED = 200.0
 
 var moving = 0  # 0 = idle, 1 = running
-var transition : bool = false  # Whether a transition animation is playing
 var was_on_floor : bool = false
 const acc = 10
 var direction : float
@@ -16,21 +15,16 @@ func _ready():
 	animationTree.active = true
 
 func _physics_process(delta: float) -> void:
-	
-	# Apply gravity
-	if not is_on_floor():
-		velocity += get_gravity() * delta
 
 	# Get the input direction
 	direction = Input.get_axis("move_left", "move_right")
 
 	# Update animations
 	update_facing_direction()
-	update_animation()
 	
 	# Check if the direction is changing
 	if direction != 0 and sign(velocity.x) != direction:
-		velocity.x = 0  # Hard stop before changing direction
+		velocity.x = 0  # Hard stop before changing direction in ALL states
 		
 	# Set horizontal velocity
 	if direction != 0 && stateMachine.checkCanMove():
@@ -40,12 +34,6 @@ func _physics_process(delta: float) -> void:
 		move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
-# Animation handling function
-func update_animation() -> void:
-	#update_facing_direction()
-	animationTree.set("parameters/Move/blend_position", direction)
-	
 
 func update_facing_direction():
 	if direction < 0:

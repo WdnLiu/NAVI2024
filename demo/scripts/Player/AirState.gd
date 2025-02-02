@@ -13,8 +13,17 @@ func _process(delta: float) -> void:
 	pass
 
 func stateProcess(delta : float):
+	character.velocity += character.get_gravity() * delta
+	
 	if (character.is_on_floor()):
 		nextState = groundState
+	_process_animation()
 		
+func _process_animation() -> void:
+	character.animationTree.set("parameters/Jump/blend_position", 0)
+
 func onExit():
-	pass 
+	character.animationTree.set("parameters/conditions/jump", false) 
+	
+func onEnter() -> void:
+	character.animationTree.set("parameters/conditions/jump", true)
