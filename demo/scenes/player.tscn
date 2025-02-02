@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://buwqq0fbfmxam"]
+[gd_scene load_steps=110 format=3 uid="uid://buwqq0fbfmxam"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_md3o7"]
 [ext_resource type="Texture2D" uid="uid://cwe4wgewhc0uw" path="res://assets/sprites/Idle/spr_casual_idle_0.png" id="2_4sdoa"]
@@ -45,6 +45,13 @@
 [ext_resource type="Texture2D" uid="uid://d2spy5xm7ns72" path="res://assets/sprites/Run/spr_run_to_idle_2.png" id="27_k5324"]
 [ext_resource type="Texture2D" uid="uid://cwwcict5llvmb" path="res://assets/sprites/Run/spr_run_to_idle_3.png" id="28_r5j2t"]
 [ext_resource type="Texture2D" uid="uid://bi2pmfjrxflb3" path="res://assets/sprites/Run/spr_run_to_idle_4.png" id="29_gilgk"]
+[ext_resource type="Texture2D" uid="uid://sgjeqcwmfnql" path="res://assets/sprites/Idle/spr_casual_idle_0-sheet.png" id="46_sn6ro"]
+[ext_resource type="Texture2D" uid="uid://miu5qxl5vvwj" path="res://assets/sprites/Run/spr_run_0-sheet.png" id="47_3cobb"]
+[ext_resource type="Script" path="res://scripts/Player/CharacterStateMachine.gd" id="48_kco1h"]
+[ext_resource type="Script" path="res://scripts/Player/GroundState.gd" id="49_v0ov8"]
+[ext_resource type="Script" path="res://scripts/Player/AirState.gd" id="50_54oor"]
+[ext_resource type="Script" path="res://scripts/Player/LandingState.gd" id="51_sargm"]
+[ext_resource type="Script" path="res://scripts/Player/labelDebug.gd" id="52_3dpwa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afwrf"]
 atlas = ExtResource("2_4sdoa")
@@ -397,6 +404,163 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7cnv"]
 size = Vector2(11, 28)
 
+[sub_resource type="Animation" id="Animation_iocvx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tdent"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("46_sn6ro")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_f4c6y"]
+resource_name = "run"
+length = 0.9
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("47_3cobb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 6, 7, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mm5u2"]
+_data = {
+"RESET": SubResource("Animation_iocvx"),
+"idle": SubResource("Animation_tdent"),
+"run": SubResource("Animation_f4c6y")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ie0ub"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7glon"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dpoq1"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_m6e1r"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ie0ub")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_7glon")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_dpoq1")
+blend_point_2/pos = -1.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cbp3b"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uxfkc"]
+states/End/position = Vector2(1248, 106)
+states/Move/node = SubResource("AnimationNodeBlendSpace1D_m6e1r")
+states/Move/position = Vector2(814, 106)
+states/Start/position = Vector2(561, 106)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_cbp3b")]
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_md3o7")
@@ -404,19 +568,52 @@ script = ExtResource("1_md3o7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_w46dv")
-animation = &"run_to_idle"
+animation = &"idle"
 autoplay = "idle_combat"
+frame = 2
+frame_progress = 0.0321102
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_e7cnv")
 
-[node name="Timers" type="Node" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 
-[node name="JumpBufferTimer" type="Timer" parent="Timers"]
-wait_time = 0.15
-one_shot = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mm5u2")
+}
+speed_scale = 4.0
 
-[node name="CoyoteTimer" type="Timer" parent="Timers"]
-wait_time = 0.1
-one_shot = true
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_uxfkc")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Move/blend_position = -0.00101012
+
+[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "currentState")]
+script = ExtResource("48_kco1h")
+character = NodePath("..")
+currentState = NodePath("Ground")
+
+[node name="Ground" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("airState")]
+script = ExtResource("49_v0ov8")
+airState = NodePath("../Air")
+
+[node name="Air" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("groundState")]
+script = ExtResource("50_54oor")
+groundState = NodePath("../Ground")
+
+[node name="Landing" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("groundState")]
+script = ExtResource("51_sargm")
+groundState = NodePath("../Ground")
+
+[node name="Label" type="Label" parent="." node_paths=PackedStringArray("stateMachine")]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = -17.0
+text = "State: "
+script = ExtResource("52_3dpwa")
+stateMachine = NodePath("../CharacterStateMachine")
