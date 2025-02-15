@@ -20,10 +20,10 @@ func stateProcess(delta : float):
 	_process_animation()
 		
 func _process_animation() -> void:
-	character.animationTree.set("parameters/Jump/blend_position", 0)
+	pass
 
 func onExit():
-	character.animationTree.set("parameters/conditions/jump", false) 
+	pass
 	
 func onEnter() -> void:
-	character.animationTree.set("parameters/conditions/jump", true)
+	pass

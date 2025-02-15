@@ -1,0 +1,205 @@
+[gd_scene load_steps=19 format=3 uid="uid://fblabb2gvbo1"]
+
+[ext_resource type="Texture2D" uid="uid://buhrqdw0eytj2" path="res://assets/sprites/Enemy/IDLE.png" id="1_d6b1h"]
+[ext_resource type="Script" path="res://scripts/samurai_enemy.gd" id="1_fvpm0"]
+[ext_resource type="Texture2D" uid="uid://kywk8lcqrqet" path="res://assets/sprites/Enemy/RUN.png" id="2_8jpsh"]
+[ext_resource type="PackedScene" uid="uid://vtf13ivytbqr" path="res://scenes/killzone.tscn" id="3_tocgs"]
+[ext_resource type="Script" path="res://scripts/enemy_state_machine.gd" id="4_l15ob"]
+[ext_resource type="Script" path="res://scripts/Player/GroundState.gd" id="5_j24xr"]
+[ext_resource type="Script" path="res://scripts/Player/AirState.gd" id="6_nxe1n"]
+
+[sub_resource type="Animation" id="Animation_pta53"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_d6b1h")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_a8j21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_d6b1h")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rdjgr"]
+resource_name = "moving"
+length = 1.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_8jpsh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w8m22"]
+_data = {
+"RESET": SubResource("Animation_a8j21"),
+"idle": SubResource("Animation_pta53"),
+"moving": SubResource("Animation_rdjgr")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_usoau"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y47em"]
+animation = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s6rq6"]
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fdtva"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r0el2"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4kckx"]
+states/Start/position = Vector2(168, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_usoau")
+states/idle/position = Vector2(341, 100)
+states/moving/node = SubResource("AnimationNodeAnimation_y47em")
+states/moving/position = Vector2(568, 100)
+transitions = ["idle", "moving", SubResource("AnimationNodeStateMachineTransition_s6rq6"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_fdtva"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_r0el2")]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rm8nc"]
+radius = 5.0
+
+[node name="Samurai enemy" type="CharacterBody2D"]
+script = ExtResource("1_fvpm0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_d6b1h")
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w8m22")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_4kckx")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/idle = false
+parameters/conditions/moving = false
+
+[node name="killzone" parent="." instance=ExtResource("3_tocgs")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(1, 17)
+shape = SubResource("CapsuleShape2D_rm8nc")
+
+[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "currentState")]
+script = ExtResource("4_l15ob")
+character = NodePath("..")
+currentState = NodePath("Ground")
+
+[node name="Ground" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("airState")]
+script = ExtResource("5_j24xr")
+airState = NodePath("../Air")
+
+[node name="Air" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("groundState")]
+script = ExtResource("6_nxe1n")
+groundState = NodePath("../Ground")
