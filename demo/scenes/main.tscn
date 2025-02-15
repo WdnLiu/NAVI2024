@@ -1059,4 +1059,4 @@ layer_0/tile_data = PackedInt32Array(9, 786433, 15, 10, 655361, 15, 11, 720897, 
 
 [node name="Samurai enemy" parent="Enemies" instance=ExtResource("2_yrbna")]
 z_index = 5
-position = Vector2(70, -94)
+position = Vector2(69, -49)

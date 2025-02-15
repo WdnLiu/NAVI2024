@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vtf13ivytbqr" path="res://scenes/killzone.tscn" id="3_tocgs"]
 [ext_resource type="Script" path="res://scripts/enemy_state_machine.gd" id="4_l15ob"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyGround.gd" id="6_8ombh"]
-[ext_resource type="Script" path="res://scripts/Enemy/EnemyAir.gd" id="7_uylxk"]
+[ext_resource type="Script" path="res://scripts/Player/AirState.gd" id="6_nxe1n"]
 
 [sub_resource type="Animation" id="Animation_a8j21"]
 length = 0.001
@@ -205,7 +205,7 @@ script = ExtResource("6_8ombh")
 airState = NodePath("../Air")
 
 [node name="Air" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("groundState")]
-script = ExtResource("7_uylxk")
+script = ExtResource("6_nxe1n")
 groundState = NodePath("../Ground")
 
 [node name="DirectionTimer" type="Timer" parent="."]

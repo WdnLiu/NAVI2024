@@ -6,7 +6,7 @@ extends CharacterBody2D
 const SPEED = 150.0
 
 var moving = 0  # 0 = idle, 1 = running
-const acc = 10
+const acc = 5
 var direction : float
 var chasing = false
 var dead = false

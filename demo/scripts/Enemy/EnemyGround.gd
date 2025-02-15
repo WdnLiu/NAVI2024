@@ -4,6 +4,7 @@ class_name EnemyGroundState
 @export var jumpSpeed : float = -350
 @export var airState : State
 @onready var direction_timer: Timer = $"../../DirectionTimer"
+var prev_direction : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +12,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func stateProcess(delta: float) -> void:
+	platform_edge()
 	if ( not character.is_on_floor()):
 		nextState = airState	
 	if !character.dead:
@@ -46,11 +48,22 @@ func onExit() -> void:
 	character.animationTree.set("parameters/conditions/idle", false)
 	
 func _on_direction_timer_timeout() -> void:
-	direction_timer.wait_time = choose([0.5,1.0,1.5])
+	direction_timer.wait_time = choose([1.0,2.0,1.5])
 	if !character.chasing:
+		prev_direction = character.direction
 		character.direction = choose([-1,0,1])
-		character.velocity.x = 0
+		if character.direction != prev_direction :
+			character.velocity.x = 0
 	
 func choose(array):
 	array.shuffle()
 	return array.front()
+
+func platform_edge() -> void:
+	var raycast: RayCast2D = character.get_node("RayCast2D")
+	if (character.direction < 0 and raycast.position.x > 0) or (character.direction > 0 and raycast.position.x < 0):
+		raycast.position.x *= -1
+	if not raycast.is_colliding():
+		character.direction *= -1
+		raycast.position.x *= -1
+		character.velocity.x = 0

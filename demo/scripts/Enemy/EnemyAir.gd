@@ -1,12 +1,11 @@
 extends State
-class_name AirState
+class_name EnemyAirState
 
 @export var groundState : State
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,10 +19,10 @@ func stateProcess(delta : float):
 	_process_animation()
 		
 func _process_animation() -> void:
-	character.animationTree.set("parameters/Jump/blend_position", 0)
+	pass
 
 func onExit():
-	character.animationTree.set("parameters/conditions/jump", false) 
+	pass
 	
 func onEnter() -> void:
-	character.animationTree.set("parameters/conditions/jump", true)
+	pass
