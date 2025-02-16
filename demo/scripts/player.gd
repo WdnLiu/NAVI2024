@@ -12,6 +12,7 @@ const acc = 10
 var direction : float
 
 func _ready():
+	Global.playerBody = self
 	animationTree.active = true
 
 func _physics_process(delta: float) -> void:
