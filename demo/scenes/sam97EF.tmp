@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://fblabb2gvbo1"]
+[gd_scene load_steps=20 format=3 uid="uid://fblabb2gvbo1"]
 
 [ext_resource type="Texture2D" uid="uid://buhrqdw0eytj2" path="res://assets/sprites/Enemy/IDLE.png" id="1_d6b1h"]
 [ext_resource type="Script" path="res://scripts/samurai_enemy.gd" id="1_fvpm0"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scripts/enemy_state_machine.gd" id="4_l15ob"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyGround.gd" id="6_8ombh"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyAir.gd" id="7_uylxk"]
-[ext_resource type="Texture2D" uid="uid://bl4d732220ib5" path="res://assets/sprites/Enemy/!Assets.png" id="8_43rsh"]
 
 [sub_resource type="Animation" id="Animation_a8j21"]
 length = 0.001
@@ -166,77 +165,9 @@ transitions = ["idle", "moving", SubResource("AnimationNodeStateMachineTransitio
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rm8nc"]
 radius = 5.0
-height = 26.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqm7r"]
 size = Vector2(20, 35)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mqtx3"]
-radius = 135.004
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbs0f"]
-atlas = ExtResource("8_43rsh")
-region = Rect2(0, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5rojh"]
-atlas = ExtResource("8_43rsh")
-region = Rect2(1024, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_224lp"]
-atlas = ExtResource("8_43rsh")
-region = Rect2(2048, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_686oy"]
-atlas = ExtResource("8_43rsh")
-region = Rect2(3072, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sb7js"]
-atlas = ExtResource("8_43rsh")
-region = Rect2(4096, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uv5xk"]
-atlas = ExtResource("8_43rsh")
-region = Rect2(5120, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pu2ss"]
-atlas = ExtResource("8_43rsh")
-region = Rect2(6144, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jsxmk"]
-atlas = ExtResource("8_43rsh")
-region = Rect2(7168, 0, 1024, 1024)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pqq8m"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xbs0f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5rojh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_224lp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_686oy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sb7js")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uv5xk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pu2ss")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jsxmk")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [node name="Samurai enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -261,7 +192,7 @@ parameters/conditions/moving = false
 [node name="killzone" parent="." instance=ExtResource("3_tocgs")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-position = Vector2(1, 18)
+position = Vector2(1, 17)
 shape = SubResource("CapsuleShape2D_rm8nc")
 
 [node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "currentState")]
@@ -288,18 +219,5 @@ shape = SubResource("RectangleShape2D_aqm7r")
 position = Vector2(16, 32)
 target_position = Vector2(0, 12)
 hit_from_inside = true
-
-[node name="Vision_area" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision_area"]
-shape = SubResource("CircleShape2D_mqtx3")
-
-[node name="Warning" type="AnimatedSprite2D" parent="."]
-position = Vector2(-7, -12)
-scale = Vector2(0.017, 0.017)
-sprite_frames = SubResource("SpriteFrames_pqq8m")
-autoplay = "default"
-frame_progress = 0.452865
 
 [connection signal="timeout" from="DirectionTimer" to="EnemyStateMachine/Ground" method="_on_direction_timer_timeout"]

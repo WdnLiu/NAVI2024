@@ -8,18 +8,18 @@ var prev_direction : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func stateProcess(delta: float) -> void:
-	platform_edge()
-	if ( not character.is_on_floor()):
+	# Get the players info
+	character.player = Global.playerBody
+	if (not character.is_on_floor()):
 		nextState = airState	
-	if !character.dead:
-		if !character.chasing:
-			character.velocity.x = min(abs(character.velocity.x + character.direction * character.acc), character.SPEED) * character.direction
-	elif character.dead:
-		character.velocity.x = 0
+	update_and_move()
+	# Check if the enemy is about to fall
+	platform_edge()
+	update_warning_pos()
 	_process_animation()
 	
 func jump():
@@ -64,6 +64,36 @@ func platform_edge() -> void:
 	if (character.direction < 0 and raycast.position.x > 0) or (character.direction > 0 and raycast.position.x < 0):
 		raycast.position.x *= -1
 	if not raycast.is_colliding():
-		character.direction *= -1
-		raycast.position.x *= -1
+		# Enemy waits for the player to come back
+		if character.chasing:
+			character.direction *= 0
+		# If it is on patrol just changes the direction
+		else:
+			character.direction *= -1
+			raycast.position.x *= -1
+			character.velocity.x = 0
+
+func update_warning_pos() -> void:
+	character.warning.position.x = character.initial_warning_pos * -character.direction 
+
+func update_and_move() -> void:
+	if !character.dead:
+		if !character.chasing:
+			patrol()
+		elif character.chasing and character.player:
+			chase()
+			
+	elif character.dead:
 		character.velocity.x = 0
+
+func chase() -> void:
+	var dir_to_player = (character.player.position - character.position).normalized()
+	if abs(dir_to_player.x) < 0.15:
+		character.direction = 0
+	else:
+		character.direction = sign(dir_to_player.x)  # Ensure the enemy moves towards the player
+		character.velocity.x = character.direction * character.SPEED
+
+func patrol() -> void:
+	if !character.chasing:
+		character.velocity.x = min(abs(character.velocity.x + character.direction * character.acc), character.SPEED) * character.direction

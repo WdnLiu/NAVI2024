@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dllidwncsvj47"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_sbj2t"]
+[ext_resource type="Script" path="res://scripts/global.gd" id="1_1wppv"]
 [ext_resource type="PackedScene" uid="uid://buwqq0fbfmxam" path="res://scenes/player.tscn" id="2_v3p2n"]
 [ext_resource type="PackedScene" uid="uid://fblabb2gvbo1" path="res://scenes/samurai_enemy.tscn" id="2_yrbna"]
 [ext_resource type="PackedScene" uid="uid://vtf13ivytbqr" path="res://scenes/killzone.tscn" id="3_qgdui"]
@@ -1021,7 +1021,7 @@ physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_7rn40")
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_sbj2t")
+script = ExtResource("1_1wppv")
 
 [node name="Player" parent="." instance=ExtResource("2_v3p2n")]
 z_index = 5
@@ -1059,4 +1059,4 @@ layer_0/tile_data = PackedInt32Array(9, 786433, 15, 10, 655361, 15, 11, 720897, 
 
 [node name="Samurai enemy" parent="Enemies" instance=ExtResource("2_yrbna")]
 z_index = 5
-position = Vector2(69, -49)
+position = Vector2(200, -50)
