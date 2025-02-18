@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/samurai_enemy.gd" id="1_fvpm0"]
 [ext_resource type="Texture2D" uid="uid://kywk8lcqrqet" path="res://assets/sprites/Enemy/RUN.png" id="2_8jpsh"]
 [ext_resource type="PackedScene" uid="uid://vtf13ivytbqr" path="res://scenes/killzone.tscn" id="3_tocgs"]
-[ext_resource type="Script" path="res://scripts/enemy_state_machine.gd" id="4_l15ob"]
+[ext_resource type="Script" path="res://scripts/Enemy/enemy_state_machine.gd" id="4_l15ob"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyGround.gd" id="6_8ombh"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyAir.gd" id="7_uylxk"]
 [ext_resource type="Texture2D" uid="uid://bl4d732220ib5" path="res://assets/sprites/Enemy/!Assets.png" id="8_43rsh"]

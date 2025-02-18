@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://y0qs7l6ofywr"]
+
+[ext_resource type="Script" path="res://scripts/Abilities/Slash.gd" id="1_v5lv1"]
+[ext_resource type="Texture2D" uid="uid://fdj664cpefgh" path="res://assets/sprites/attacking/slash_1-sheet.png" id="2_isijt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ngdn"]
+atlas = ExtResource("2_isijt")
+region = Rect2(0, 0, 101, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omw3j"]
+atlas = ExtResource("2_isijt")
+region = Rect2(101, 0, 101, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3doc"]
+atlas = ExtResource("2_isijt")
+region = Rect2(202, 0, 101, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjcmh"]
+atlas = ExtResource("2_isijt")
+region = Rect2(303, 0, 101, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2qj4"]
+atlas = ExtResource("2_isijt")
+region = Rect2(404, 0, 101, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_duj5x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ngdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omw3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3doc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjcmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2qj4")
+}],
+"loop": false,
+"name": &"slash",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2j05f"]
+radius = 16.0
+height = 96.0
+
+[node name="Slash" type="Node2D" node_paths=PackedStringArray("animatedSprite")]
+z_index = 2
+script = ExtResource("1_v5lv1")
+animatedSprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_duj5x")
+animation = &"slash"
+autoplay = "slash"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2j05f")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

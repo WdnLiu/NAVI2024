@@ -11,21 +11,21 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func stateProcess(delta: float) -> void:
+func stateProcess(_delta: float) -> void:
 	# Get the players info
 	character.player = Global.playerBody
 	if (not character.is_on_floor()):
 		nextState = airState	
-	update_and_move()
-	# Check if the enemy is about to fall
-	platform_edge()
-	update_warning_pos()
-	_process_animation()
+	#update_and_move()
+	## Check if the enemy is about to fall
+	#platform_edge()
+	#update_warning_pos()
+	#_process_animation()
 	
 func jump():
 	character.velocity.y = jumpSpeed
 
-func state_input(event : InputEvent):
+func state_input(_event : InputEvent):
 	pass
 
 func _process_animation() -> void:

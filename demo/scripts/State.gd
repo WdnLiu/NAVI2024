@@ -12,13 +12,13 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
-func state_input(event):
+func state_input(_event):
 	pass
 
-func stateProcess(delta : float):
+func stateProcess(_delta : float):
 	pass
 
 func onEnter():

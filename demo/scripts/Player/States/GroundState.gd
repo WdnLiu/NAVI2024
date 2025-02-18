@@ -3,13 +3,14 @@ class_name GroundState
 
 @export var jumpSpeed : float = -350
 @export var airState : State
+@export var attackState : State
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func stateProcess(delta: float) -> void:
+func stateProcess(_delta: float) -> void:
 	if ( not character.is_on_floor()):
 		nextState = airState
 		
@@ -23,6 +24,12 @@ func state_input(event : InputEvent):
 		jump()
 		
 		nextState = airState
+	if (event.is_action_pressed("attack")):
+		attack()
+
+func attack():
+	nextState = attackState
+	character.animationTree.set("parameters/conditions/attack", true)
 
 func _process_animation() -> void:
 	
@@ -37,6 +44,7 @@ func _process_animation() -> void:
 	character.animationTree.set("parameters/Idle/blend_position", 0)
 	character.animationTree.set("parameters/IdleToRun/blend_position", 0)
 	character.animationTree.set("parameters/RunToIdle/blend_position", 0)
+	character.animationTree.set("parameters/Attack/blend_position", 0)
 
 func onEnter() -> void:
 	_process_animation()
