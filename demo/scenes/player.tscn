@@ -768,7 +768,7 @@ states/RunToIdle/node = SubResource("AnimationNodeBlendSpace1D_gecvq")
 states/RunToIdle/position = Vector2(733, 206)
 states/Start/position = Vector2(324, 147)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_8mk6x"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_mn76h"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_s5i0d"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_qsgo3"), "Idle", "IdleToRun", SubResource("AnimationNodeStateMachineTransition_pfk0y"), "IdleToRun", "Run", SubResource("AnimationNodeStateMachineTransition_rffed"), "RunToIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_poair"), "Run", "RunToIdle", SubResource("AnimationNodeStateMachineTransition_0xb3d"), "RunToIdle", "Jump", SubResource("AnimationNodeStateMachineTransition_0b55f"), "IdleToRun", "Jump", SubResource("AnimationNodeStateMachineTransition_gat5f"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_hu4hw")]
-graph_offset = Vector2(0, 92.8594)
+graph_offset = Vector2(-313, -26.1406)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2

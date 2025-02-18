@@ -21,6 +21,7 @@ func jump():
 func state_input(event : InputEvent):
 	if (event.is_action_pressed("jump")):
 		jump()
+		
 		nextState = airState
 
 func _process_animation() -> void:
