@@ -782,8 +782,7 @@ animation = &"run_to_idle"
 autoplay = "idle_combat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(5, 3)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_e7cnv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
