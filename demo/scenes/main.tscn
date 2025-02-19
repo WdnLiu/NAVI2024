@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dllidwncsvj47"]
+[gd_scene load_steps=13 format=3 uid="uid://dllidwncsvj47"]
 
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_1wppv"]
 [ext_resource type="PackedScene" uid="uid://buwqq0fbfmxam" path="res://scenes/player.tscn" id="2_v3p2n"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://g8ix7jmap5li" path="res://assets/sprites/Bg/tiles.png" id="4_epdir"]
 [ext_resource type="Texture2D" uid="uid://bg7dhmaq077lf" path="res://assets/sprites/Bg/pixelart_starfield_corona.png" id="5_cdsie"]
 [ext_resource type="PackedScene" uid="uid://dhl46pbejbd1f" path="res://scenes/sanity_bar.tscn" id="6_b08l0"]
-[ext_resource type="PackedScene" uid="uid://brogrdit85ndk" path="res://scenes/initial_cutscene.tscn" id="8_8nvd3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5mqwc"]
 
@@ -1025,6 +1024,13 @@ sources/1 = SubResource("TileSetAtlasSource_7rn40")
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1wppv")
 
+[node name="killzone" parent="." instance=ExtResource("3_qgdui")]
+position = Vector2(-281, -46)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(0, 74)
+shape = SubResource("WorldBoundaryShape2D_5mqwc")
+
 [node name="Player" parent="." instance=ExtResource("2_v3p2n")]
 z_index = 5
 position = Vector2(-3, -80)
@@ -1034,13 +1040,6 @@ position = Vector2(2, -11)
 zoom = Vector2(2.5, 2.5)
 limit_bottom = 45
 position_smoothing_speed = 1.0
-
-[node name="killzone" parent="." instance=ExtResource("3_qgdui")]
-position = Vector2(-281, -46)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-position = Vector2(0, 74)
-shape = SubResource("WorldBoundaryShape2D_5mqwc")
 
 [node name="Enviroment" type="Node" parent="."]
 
@@ -1075,8 +1074,3 @@ grow_horizontal = 0
 [node name="Samurai enemy" parent="Enemies" instance=ExtResource("2_yrbna")]
 z_index = 5
 position = Vector2(200, -50)
-
-[node name="InitialCutscene" parent="." instance=ExtResource("8_8nvd3")]
-
-[node name="Camera2D" type="Camera2D" parent="InitialCutscene"]
-position = Vector2(581, 340)

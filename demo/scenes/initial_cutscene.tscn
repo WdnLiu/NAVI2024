@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://brogrdit85ndk"]
+[gd_scene load_steps=13 format=3 uid="uid://brogrdit85ndk"]
 
 [ext_resource type="FontFile" uid="uid://bqkhcmic8ech5" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_2bbn7"]
 [ext_resource type="Script" path="res://scripts/Cutscenes/initial_cutscene.gd" id="1_cm2w8"]
+[ext_resource type="PackedScene" uid="uid://dllidwncsvj47" path="res://scenes/main.tscn" id="2_dh2k6"]
 [ext_resource type="FontFile" uid="uid://cbv4a3nlb0md1" path="res://assets/fonts/PixelOperator8.ttf" id="2_gr8ix"]
 [ext_resource type="Texture2D" uid="uid://p2ibmnhdp2w8" path="res://assets/sprites/Initial Cutscene/codec_result.png" id="3_8ewfr"]
 
@@ -63,10 +64,10 @@ tracks/4/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(3, 7, 8, 11.0333, 12.0333, 15.0333, 16.0333, 18, 19.0333, 23, 24, 26.5333, 27.5333, 29.5, 30.5333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3, 7, 8, 11.0333, 12.0333, 15.0333, 16.0333, 18, 19.0333, 23, 24, 26.5333, 27.5333, 29.5, 30.5333, 33.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -101,9 +102,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
+"times": PackedFloat32Array(33.8333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_scene"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_tw7fx"]
@@ -205,6 +209,8 @@ transitions = ["Start", "Chapter_1", SubResource("AnimationNodeStateMachineTrans
 
 [node name="InitialCutscene" type="Node2D"]
 script = ExtResource("1_cm2w8")
+autoplay = true
+next_scene = ExtResource("2_dh2k6")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
