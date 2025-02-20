@@ -10879,7 +10879,7 @@ tile_proxies/coords_level = [[12, Vector2i(0, 0)], [93, Vector2i(0, 0)], [12, Ve
 script = ExtResource("1_1wppv")
 
 [node name="killzone" parent="." instance=ExtResource("3_qgdui")]
-position = Vector2(-281, -46)
+position = Vector2(-276, 296)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 position = Vector2(0, 74)
@@ -10892,7 +10892,7 @@ position = Vector2(-3, -80)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(2, -11)
 zoom = Vector2(2.5, 2.5)
-limit_bottom = 45
+limit_bottom = 400
 position_smoothing_speed = 1.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -10917,6 +10917,7 @@ position = Vector2(199, -63)
 [node name="Enviroment" type="Node" parent="."]
 
 [node name="BackGround" type="TileMap" parent="Enviroment"]
+z_as_relative = false
 position = Vector2(11, 0)
 tile_set = SubResource("TileSet_4yp8e")
 format = 2
