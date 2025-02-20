@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://bqkhcmic8ech5" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_2bbn7"]
 [ext_resource type="Script" path="res://scripts/Cutscenes/initial_cutscene.gd" id="1_cm2w8"]
-[ext_resource type="PackedScene" uid="uid://dllidwncsvj47" path="res://scenes/main.tscn" id="2_dh2k6"]
+[ext_resource type="PackedScene" uid="uid://dllidwncsvj47" path="res://scenes/main_map.tscn" id="2_dh2k6"]
 [ext_resource type="FontFile" uid="uid://cbv4a3nlb0md1" path="res://assets/fonts/PixelOperator8.ttf" id="2_gr8ix"]
 [ext_resource type="Texture2D" uid="uid://p2ibmnhdp2w8" path="res://assets/sprites/Initial Cutscene/codec_result.png" id="3_8ewfr"]
 
