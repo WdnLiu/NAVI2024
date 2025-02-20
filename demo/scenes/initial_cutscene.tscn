@@ -1,0 +1,270 @@
+[gd_scene load_steps=13 format=3 uid="uid://brogrdit85ndk"]
+
+[ext_resource type="FontFile" uid="uid://bqkhcmic8ech5" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_2bbn7"]
+[ext_resource type="Script" path="res://scripts/Cutscenes/initial_cutscene.gd" id="1_cm2w8"]
+[ext_resource type="PackedScene" uid="uid://dllidwncsvj47" path="res://scenes/main.tscn" id="2_dh2k6"]
+[ext_resource type="FontFile" uid="uid://cbv4a3nlb0md1" path="res://assets/fonts/PixelOperator8.ttf" id="2_gr8ix"]
+[ext_resource type="Texture2D" uid="uid://p2ibmnhdp2w8" path="res://assets/sprites/Initial Cutscene/codec_result.png" id="3_8ewfr"]
+
+[sub_resource type="Animation" id="Animation_kimwn"]
+resource_name = "Chapter_1"
+length = 34.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Panel/VBoxContainer/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Panel/VBoxContainer/Label:visible_characters")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3, 3.03333, 3.06667, 3.1, 3.13333, 3.16667, 3.2, 3.23333, 3.26667, 3.3, 3.33333, 3.36667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.4, 4.5, 5.5, 6, 7.03333, 8, 10, 11.0333, 12.0333, 14, 15.0333, 16.0333, 17.0333, 18, 19.0333, 21.0333, 23, 24, 25.5, 26.5333, 27.5333, 28.5333, 29.5, 30.5333, 31.5, 32.5333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.324, 0.324, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.648, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 7, 8, 11.0333, 12.0333, 15.0333, 16.0333, 18, 19.0333, 23, 24, 26.5333, 27.5333, 29.5, 30.5333, 33.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3, 8, 11.0333, 12.0333, 15.0333, 16.0333, 18, 19.0333, 23, 24, 26.5333, 27.5333, 29.5, 30.5333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["
+Hey... can you hear me?", "
+I'm not here to explain you how to do your job...", "
+I'm not here to explain you how to do your job...", "
+I just want to review the main aspects of your mission.", "
+I just want to review the main aspects of your mission.", "
+You will arrive on Mars in a few minutes...", "
+You will arrive on Mars in a few minutes...", "
+Your task is to find the district leaders and eliminate them as soon as you see them.", "
+Your task is to find the district leaders and eliminate them as soon as you see them.", "
+The more time you spend here, the greater risk to the mission.", "
+The more time you spend here, the greater risk to the mission.", "
+Be silent, be fast. You have not been here.", "
+Be silent, be fast. You have not been here.", "
+Now... Go!"]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(33.8333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_scene"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tw7fx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Panel/VBoxContainer/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["The Handler"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Panel/VBoxContainer/Label:visible_characters")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["
+I'm not here to explain you how to do your job..."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y34cg"]
+_data = {
+"Chapter_1": SubResource("Animation_kimwn"),
+"RESET": SubResource("Animation_tw7fx")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fe4id"]
+animation = &"Chapter_1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_thabx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_egfqb"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fsoj6"]
+states/Chapter_1/node = SubResource("AnimationNodeAnimation_fe4id")
+states/Chapter_1/position = Vector2(414, 100)
+transitions = ["Start", "Chapter_1", SubResource("AnimationNodeStateMachineTransition_thabx"), "Chapter_1", "End", SubResource("AnimationNodeStateMachineTransition_egfqb")]
+
+[node name="InitialCutscene" type="Node2D"]
+script = ExtResource("1_cm2w8")
+autoplay = true
+next_scene = ExtResource("2_dh2k6")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(1000, 300)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -507.0
+offset_top = -273.0
+offset_right = 493.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
+custom_minimum_size = Vector2(1000, 250)
+layout_mode = 0
+offset_left = -4.0
+offset_right = 996.0
+offset_bottom = 300.0
+
+[node name="Label" type="Label" parent="UI/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2bbn7")
+theme_override_font_sizes/font_size = 30
+text = "The Handler"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Panel/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(1000, 220)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_gr8ix")
+theme_override_fonts/bold_font = ExtResource("1_2bbn7")
+theme_override_font_sizes/normal_font_size = 25
+text = "
+I'm not here to explain you how to do your job..."
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(570, 341)
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("3_8ewfr")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y34cg")
+}
+tree_root = SubResource("AnimationNodeStateMachine_fsoj6")
