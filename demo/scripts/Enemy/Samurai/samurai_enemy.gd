@@ -29,12 +29,12 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	# Set horizontal velocity
-	#if direction != 0 && stateMachine.checkCanMove():
-		#velocity.x = min(abs(velocity.x + direction * acc), SPEED) * direction
-	#else:
-		#velocity.x = 0
-		#move_toward(velocity.x, 0, SPEED)
-		#
+	if direction != 0 && stateMachine.checkCanMove():
+		velocity.x = min(abs(velocity.x + direction * acc), SPEED) * direction
+	else:
+		velocity.x = 0
+		move_toward(velocity.x, 0, SPEED)
+		
 	update_facing_direction()
 	move_and_slide()
 	

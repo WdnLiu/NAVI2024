@@ -19,8 +19,8 @@ func stateProcess(_delta: float) -> void:
 		nextState = airState	
 	update_and_move()
 	## Check if the enemy is about to fall
-	#platform_edge()
-	#update_warning_pos()
+	platform_edge()
+	update_warning_pos()
 	_process_animation()
 	
 func jump():
