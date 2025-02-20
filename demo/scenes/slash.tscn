@@ -1,45 +1,45 @@
 [gd_scene load_steps=10 format=3 uid="uid://y0qs7l6ofywr"]
 
 [ext_resource type="Script" path="res://scripts/Abilities/Slash.gd" id="1_v5lv1"]
-[ext_resource type="Texture2D" uid="uid://fdj664cpefgh" path="res://assets/sprites/attacking/slash_1-sheet.png" id="2_isijt"]
+[ext_resource type="Texture2D" uid="uid://fdj664cpefgh" path="res://assets/sprites/Player/attacking/slash/slash_1-sheet.png" id="2_frtbh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ngdn"]
-atlas = ExtResource("2_isijt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j8qe"]
+atlas = ExtResource("2_frtbh")
 region = Rect2(0, 0, 101, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_omw3j"]
-atlas = ExtResource("2_isijt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6wa3"]
+atlas = ExtResource("2_frtbh")
 region = Rect2(101, 0, 101, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i3doc"]
-atlas = ExtResource("2_isijt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yroxl"]
+atlas = ExtResource("2_frtbh")
 region = Rect2(202, 0, 101, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjcmh"]
-atlas = ExtResource("2_isijt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_18o1e"]
+atlas = ExtResource("2_frtbh")
 region = Rect2(303, 0, 101, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b2qj4"]
-atlas = ExtResource("2_isijt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7jni"]
+atlas = ExtResource("2_frtbh")
 region = Rect2(404, 0, 101, 28)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_duj5x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1ngdn")
+"texture": SubResource("AtlasTexture_0j8qe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_omw3j")
+"texture": SubResource("AtlasTexture_f6wa3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i3doc")
+"texture": SubResource("AtlasTexture_yroxl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xjcmh")
+"texture": SubResource("AtlasTexture_18o1e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b2qj4")
+"texture": SubResource("AtlasTexture_e7jni")
 }],
 "loop": false,
 "name": &"slash",

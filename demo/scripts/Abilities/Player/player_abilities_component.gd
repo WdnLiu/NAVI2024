@@ -5,6 +5,5 @@ class_name PlayerAbilitiesComponent
 @export var ability : Ability
 @export var user : Node2D
 
-func _input(event: InputEvent) -> void:
-	if (event.is_action_pressed("attack")):
-		ability.use(user)
+func _on_attack_starting_slash() -> void:
+	ability.use(user)

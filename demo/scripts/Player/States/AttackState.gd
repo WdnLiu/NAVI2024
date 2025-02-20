@@ -2,6 +2,7 @@ extends State
 class_name AttackState
 
 @export var groundState : State
+signal startingSlash
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,8 +21,7 @@ func _processAnimation():
 
 func onEnter() -> void:
 	character.animationTree.set("parameters/conditions/finishAttack", false)
-
-
+	emit_signal("startingSlash")
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "attack"):
