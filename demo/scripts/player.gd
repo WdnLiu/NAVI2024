@@ -9,12 +9,14 @@ const SPEED = 200.0
 var moving = 0  # 0 = idle, 1 = running
 var was_on_floor : bool = false
 const acc = 10
-var direction : float
+@export var direction : float
+@export var leftFacing : bool = false
 
 func _ready():
+	Global.playerBody = self
 	animationTree.active = true
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 
 	# Get the input direction
 	direction = Input.get_axis("move_left", "move_right")
@@ -38,6 +40,8 @@ func _physics_process(delta: float) -> void:
 func update_facing_direction():
 	if direction < 0:
 		animatedSprite.flip_h = true
+		leftFacing = true
 	elif direction > 0:
 		animatedSprite.flip_h = false
+		leftFacing = false
 	
