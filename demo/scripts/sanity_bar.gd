@@ -42,7 +42,7 @@ func _ready() -> void:
 	fill_stylebox = self.get_theme_stylebox("fill")
 	init_sanity(100)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	total_frames += 1
 	
 	if int(total_frames) % 60 == 0:
