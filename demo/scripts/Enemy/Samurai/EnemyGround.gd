@@ -3,6 +3,7 @@ class_name EnemyGroundState
 
 @export var jumpSpeed : float = -350
 @export var airState : State
+@export var hurtState: EnemyHurtState
 @onready var direction_timer: Timer = $"../../DirectionTimer"
 var prev_direction : float
 
@@ -16,11 +17,11 @@ func stateProcess(_delta: float) -> void:
 	character.player = Global.playerBody
 	if (not character.is_on_floor()):
 		nextState = airState	
-	#update_and_move()
+	update_and_move()
 	## Check if the enemy is about to fall
 	#platform_edge()
 	#update_warning_pos()
-	#_process_animation()
+	_process_animation()
 	
 func jump():
 	character.velocity.y = jumpSpeed
@@ -97,3 +98,8 @@ func chase() -> void:
 func patrol() -> void:
 	if !character.chasing:
 		character.velocity.x = min(abs(character.velocity.x + character.direction * character.acc), character.SPEED) * character.direction
+
+
+func _on_samurai_enemy_enemy_hurt() -> void:
+	nextState = hurtState
+	character.animationTree.set("parameters/conditions/damaged", true)

@@ -53,10 +53,10 @@
 [ext_resource type="Script" path="res://scripts/Player/States/GroundState.gd" id="49_v0ov8"]
 [ext_resource type="Script" path="res://scripts/Player/States/AirState.gd" id="50_54oor"]
 [ext_resource type="Texture2D" uid="uid://bcoqqmqmdh5kl" path="res://assets/sprites/Player/Jump/spr_jump_0-sheet.png" id="50_bke5d"]
-[ext_resource type="Script" path="res://scripts/Player/labelDebug.gd" id="52_3dpwa"]
+[ext_resource type="Script" path="res://testing/playerLabel.gd" id="52_3dpwa"]
 [ext_resource type="Script" path="res://scripts/Player/States/AttackState.gd" id="54_squtv"]
 [ext_resource type="Script" path="res://scripts/Abilities/Player/player_abilities_component.gd" id="57_xmrqt"]
-[ext_resource type="Script" path="res://scripts/Abilities/SlashUse.gd" id="58_x53pq"]
+[ext_resource type="Script" path="res://scripts/Abilities/Player/SlashUse.gd" id="58_x53pq"]
 [ext_resource type="PackedScene" uid="uid://y0qs7l6ofywr" path="res://scenes/slash.tscn" id="59_5rra8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afwrf"]
@@ -451,7 +451,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_eiiqx"]
 resource_name = "attack"
-length = 0.25
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

@@ -1,9 +1,11 @@
-extends CharacterBody2D
+extends Enemy
 @onready var stateMachine: EnemyStateMachine = $EnemyStateMachine
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var vision_area: Area2D = $Vision_area
 @onready var warning: AnimatedSprite2D = $Warning
+
+signal enemyHurt
 
 const SPEED = 125.0
 
@@ -23,15 +25,16 @@ func _ready():
 	vision_area.body_exited.connect(_on_player_exited)
 	# The enemies won't be chasing you at the beginning
 	warning.visible = false
+	health = 2
 
 func _physics_process(_delta: float) -> void:
 	# Set horizontal velocity
-	if direction != 0 && stateMachine.checkCanMove():
-		velocity.x = min(abs(velocity.x + direction * acc), SPEED) * direction
-	else:
-		velocity.x = 0
-		move_toward(velocity.x, 0, SPEED)
-		
+	#if direction != 0 && stateMachine.checkCanMove():
+		#velocity.x = min(abs(velocity.x + direction * acc), SPEED) * direction
+	#else:
+		#velocity.x = 0
+		#move_toward(velocity.x, 0, SPEED)
+		#
 	update_facing_direction()
 	move_and_slide()
 	
@@ -53,3 +56,7 @@ func _on_player_exited(body):
 		chasing = false
 		warning.visible = false
 		print("Lost sight of player")
+		
+func hit(damage: int, knockback: Vector2) -> void:
+	super.hit(damage, knockback)
+	emit_signal("enemyHurt")

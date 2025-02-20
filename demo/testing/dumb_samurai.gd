@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Enemy
 @onready var stateMachine: EnemyStateMachine = $EnemyStateMachine
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 const SPEED = 125.0
 
+@export var health: int = 5
 var moving = 0  # 0 = idle, 1 = running
 const acc = 5
 var direction : float
@@ -18,6 +19,7 @@ var player_in_are = false
 
 func _ready():
 	animationTree.active = true
+	canBeHit = true
 
 func _physics_process(_delta: float) -> void:
 	# Set horizontal velocity
@@ -29,3 +31,7 @@ func _physics_process(_delta: float) -> void:
 		
 	#update_facing_direction()
 	move_and_slide()
+	
+func hit(damage: int, knockback: Vector2):
+	health -= damage
+	velocity += knockback
