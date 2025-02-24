@@ -904,6 +904,7 @@ script = ExtResource("54_squtv")
 groundState = NodePath("../Ground")
 
 [node name="Label" type="Label" parent="." node_paths=PackedStringArray("stateMachine")]
+visible = false
 offset_left = -40.0
 offset_top = -40.0
 offset_right = 40.0
