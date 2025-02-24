@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 	total_frames += 1
 	
 	if int(total_frames) % 60 == 0:
-		sanity -= 5
+		sanity -= 1
 
 func _on_timer_timeout() -> void:
 	change_bar.value = sanity
