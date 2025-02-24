@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://brogrdit85ndk"]
+[gd_scene load_steps=15 format=3 uid="uid://brogrdit85ndk"]
 
 [ext_resource type="FontFile" uid="uid://bqkhcmic8ech5" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_2bbn7"]
 [ext_resource type="Script" path="res://scripts/Cutscenes/initial_cutscene.gd" id="1_cm2w8"]
-[ext_resource type="PackedScene" uid="uid://dllidwncsvj47" path="res://scenes/main_map.tscn" id="2_dh2k6"]
+[ext_resource type="PackedScene" uid="uid://dllidwncsvj47" path="res://scenes/main.tscn" id="2_dh2k6"]
 [ext_resource type="FontFile" uid="uid://cbv4a3nlb0md1" path="res://assets/fonts/PixelOperator8.ttf" id="2_gr8ix"]
 [ext_resource type="Texture2D" uid="uid://p2ibmnhdp2w8" path="res://assets/sprites/Initial Cutscene/codec_result.png" id="3_8ewfr"]
+[ext_resource type="AudioStream" uid="uid://bb2anmbi367ni" path="res://assets/music/Radio Static.wav" id="6_w3aso"]
+[ext_resource type="AudioStream" uid="uid://dinhg3xs5eje7" path="res://assets/sounds/typing.wav" id="7_riahu"]
 
 [sub_resource type="Animation" id="Animation_kimwn"]
 resource_name = "Chapter_1"
-length = 34.0
+length = 50.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -52,7 +54,7 @@ tracks/3/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3.4, 4.5, 5.5, 6, 7.03333, 8, 10, 11.0333, 12.0333, 14, 15.0333, 16.0333, 17.0333, 18, 19.0333, 21.0333, 23, 24, 25.5, 26.5333, 27.5333, 28.5333, 29.5, 30.5333, 31.5, 32.5333),
+"times": PackedFloat32Array(3.4, 4.5, 5.5, 6, 9.39996, 10.3666, 13.0333, 14.0666, 15.0666, 18.3333, 19.3666, 20.3666, 21.3666, 24.3, 25.3333, 27.3333, 31.3334, 32.3334, 33.8334, 37.1666, 38.1666, 39.1666, 42.4333, 43.4666, 44.4333, 45.4666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.324, 0.324, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.648, 1.0]
@@ -64,7 +66,7 @@ tracks/4/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(3, 7, 8, 11.0333, 12.0333, 15.0333, 16.0333, 18, 19.0333, 23, 24, 26.5333, 27.5333, 29.5, 30.5333, 33.9667),
+"times": PackedFloat32Array(3, 9.36663, 10.3666, 14.0666, 15.0666, 19.3666, 20.3666, 24.3, 25.3333, 31.3334, 32.3334, 37.1666, 38.1666, 42.4333, 43.4666, 46.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, true]
@@ -76,7 +78,7 @@ tracks/5/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(3, 8, 11.0333, 12.0333, 15.0333, 16.0333, 18, 19.0333, 23, 24, 26.5333, 27.5333, 29.5, 30.5333),
+"times": PackedFloat32Array(3, 10.3666, 14.0666, 15.0666, 19.3666, 20.3666, 24.3, 25.3333, 31.3334, 32.3334, 37.1666, 38.1666, 42.4333, 43.4666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": ["
@@ -102,7 +104,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(33.8333),
+"times": PackedFloat32Array(47.9667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -268,3 +270,14 @@ libraries = {
 "": SubResource("AnimationLibrary_y34cg")
 }
 tree_root = SubResource("AnimationNodeStateMachine_fsoj6")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="BG" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_w3aso")
+autoplay = true
+bus = &"Background"
+
+[node name="Typing" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_riahu")
+volume_db = -10.0

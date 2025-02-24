@@ -2,6 +2,7 @@ extends State
 class_name AirState
 
 @export var groundState : State
+@onready var landing: AudioStreamPlayer = $"../../Sounds/Landing"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,7 +24,12 @@ func _process_animation() -> void:
 	character.animationTree.set("parameters/Jump/blend_position", 0)
 
 func onExit():
-	character.animationTree.set("parameters/conditions/jump", false) 
+	character.animationTree.set("parameters/conditions/jump", false)
+	sound() 
 	
 func onEnter() -> void:
 	character.animationTree.set("parameters/conditions/jump", true)
+	
+func sound() -> void:
+	landing.pitch_scale = randf_range(0.8, 1.2)
+	landing.play()

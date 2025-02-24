@@ -3,8 +3,8 @@ class_name AttackState
 
 @export var groundState : State
 signal startingSlash
-@onready var sword_a: AudioStreamPlayer2D = $"../../Sounds/SwordA"
-@onready var sword_b: AudioStreamPlayer2D = $"../../Sounds/SwordB"
+@onready var sword_a: AudioStreamPlayer = $"../../Sounds/SwordA"
+@onready var sword_b: AudioStreamPlayer = $"../../Sounds/SwordB"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,8 +40,8 @@ func choose(array):
 func sound():
 	var attack_sound = choose([0.0,1.0])
 	if attack_sound == 0:
-		sword_a.pitch_scale = randf_range(0.8, 1.2)  # Random pitch variation
+		sword_a.pitch_scale = randf_range(0.8, 1.2)
 		sword_a.play()
 	else:
-		sword_b.pitch_scale = randf_range(0.8, 1.2)  # Random pitch variation
+		sword_b.pitch_scale = randf_range(0.8, 1.2)
 		sword_b.play()
