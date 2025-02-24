@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cbv4a3nlb0md1" path="res://assets/fonts/PixelOperator8.ttf" id="2_gr8ix"]
 [ext_resource type="Texture2D" uid="uid://p2ibmnhdp2w8" path="res://assets/sprites/Initial Cutscene/codec_result.png" id="3_8ewfr"]
 [ext_resource type="AudioStream" uid="uid://bb2anmbi367ni" path="res://assets/music/Radio Static.wav" id="6_w3aso"]
-[ext_resource type="AudioStream" uid="uid://dinhg3xs5eje7" path="res://assets/sounds/typing.wav" id="7_riahu"]
+[ext_resource type="AudioStream" uid="uid://t3r4pegibgix" path="res://assets/sounds/typing.wav" id="7_mgaub"]
 
 [sub_resource type="Animation" id="Animation_kimwn"]
 resource_name = "Chapter_1"
@@ -279,5 +279,5 @@ autoplay = true
 bus = &"Background"
 
 [node name="Typing" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("7_riahu")
-volume_db = -10.0
+stream = ExtResource("7_mgaub")
+bus = &"SFX"
