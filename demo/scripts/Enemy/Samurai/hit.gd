@@ -1,6 +1,6 @@
 class_name EnemyHurtState
 extends State
-
+@onready var hit: AudioStreamPlayer2D = $"../../Sounds/Hit"
 @export var groundState: EnemyGroundState
 
 #TODO: implement being able to be hit on air, currently can only return to ground state
@@ -21,6 +21,7 @@ func stateProcess(delta : float):
 func onEnter() -> void:
 	character.animationTree.set("parameters/conditions/finishedDamaged", false)
 	character.canBeHit = false
+	hit.play()
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if (character.health == 0):

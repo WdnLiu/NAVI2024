@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=3 uid="uid://buwqq0fbfmxam"]
+[gd_scene load_steps=148 format=3 uid="uid://buwqq0fbfmxam"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_md3o7"]
 [ext_resource type="Texture2D" uid="uid://cwe4wgewhc0uw" path="res://assets/sprites/Player/Idle/spr_casual_idle_0.png" id="2_4sdoa"]
@@ -58,6 +58,8 @@
 [ext_resource type="Script" path="res://scripts/Abilities/Player/player_abilities_component.gd" id="57_xmrqt"]
 [ext_resource type="Script" path="res://scripts/Abilities/Player/SlashUse.gd" id="58_x53pq"]
 [ext_resource type="PackedScene" uid="uid://y0qs7l6ofywr" path="res://scenes/slash.tscn" id="59_5rra8"]
+[ext_resource type="AudioStream" uid="uid://doqt8lmp25svo" path="res://assets/sounds/swordA.wav" id="59_fb30r"]
+[ext_resource type="AudioStream" uid="uid://di151j674x7cq" path="res://assets/sounds/swordB.wav" id="60_5vwfg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afwrf"]
 atlas = ExtResource("2_4sdoa")
@@ -921,6 +923,16 @@ stateMachine = NodePath("../CharacterStateMachine")
 script = ExtResource("57_xmrqt")
 ability = SubResource("Resource_tbd53")
 user = NodePath("..")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="SwordA" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("59_fb30r")
+bus = &"SFX"
+
+[node name="SwordB" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("60_5vwfg")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="startingSlash" from="CharacterStateMachine/Attack" to="PlayerAbilitiesComponent" method="_on_attack_starting_slash"]
