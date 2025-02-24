@@ -1,13 +1,13 @@
 extends State
 class_name GroundState
-
 @export var jumpSpeed : float = -350
 @export var airState : State
 @export var attackState : State
+@onready var jump_sound: AudioStreamPlayer = $"../../Sounds/JumpSound"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func stateProcess(_delta: float) -> void:
@@ -17,6 +17,7 @@ func stateProcess(_delta: float) -> void:
 	_process_animation()
 	
 func jump():
+	sound()
 	character.velocity.y = jumpSpeed
 
 func state_input(event : InputEvent):
@@ -52,3 +53,6 @@ func onEnter() -> void:
 func onExit() -> void:
 	character.animationTree.set("parameters/conditions/run", false)
 	character.animationTree.set("parameters/conditions/idle", false)
+	
+func sound() -> void:
+	jump_sound.play()
