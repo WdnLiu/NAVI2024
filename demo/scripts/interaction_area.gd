@@ -5,6 +5,7 @@ class_name InteractionArea
 
 
 var interact: Callable = func():
+	print("I am default call")
 	pass
 
 

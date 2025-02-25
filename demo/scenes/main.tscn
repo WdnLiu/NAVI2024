@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dllidwncsvj47"]
+[gd_scene load_steps=26 format=3 uid="uid://dllidwncsvj47"]
 
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_1wppv"]
 [ext_resource type="PackedScene" uid="uid://buwqq0fbfmxam" path="res://scenes/player.tscn" id="2_v3p2n"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d32hoyjrqsqoo" path="res://assets/sprites/Bg/4.png" id="9_vcvmx"]
 [ext_resource type="Texture2D" uid="uid://cerbu5ft18o76" path="res://assets/sprites/Bg/industrial.png" id="10_kth35"]
 [ext_resource type="AudioStream" uid="uid://3fb3petumvxu" path="res://assets/music/Troubling News.wav" id="11_5oajh"]
+[ext_resource type="PackedScene" uid="uid://dwsn8egg1kjqf" path="res://scenes/npc.tscn" id="12_ymjbl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5mqwc"]
 
@@ -10942,3 +10943,7 @@ layer_0/tile_data = PackedInt32Array(10878804, 1, 15, -851983, 655445, 10, -7864
 [node name="BG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_5oajh")
 autoplay = true
+
+[node name="NPC" parent="." instance=ExtResource("12_ymjbl")]
+z_index = 10
+position = Vector2(3834, 317)
