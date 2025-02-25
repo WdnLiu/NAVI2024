@@ -996,6 +996,9 @@ stateMachine = NodePath("../CharacterStateMachine")
 
 [node name="CoyoteTimer" type="Timer" parent="Timers"]
 
+[node name="RollCD" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="PlayerAbilitiesComponent" type="Node" parent="." node_paths=PackedStringArray("user")]
 script = ExtResource("57_xmrqt")
 ability = SubResource("Resource_tbd53")
@@ -1019,3 +1022,4 @@ stream = ExtResource("60_5vwfg")
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Roll" method="_on_animation_tree_animation_finished"]
 [connection signal="startingSlash" from="CharacterStateMachine/Attack" to="PlayerAbilitiesComponent" method="_on_attack_starting_slash"]
+[connection signal="timeout" from="Timers/RollCD" to="CharacterStateMachine/Ground" method="_on_roll_cd_timeout"]

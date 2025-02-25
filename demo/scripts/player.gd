@@ -22,6 +22,8 @@ func _ready():
 	animationTree.active = true
 
 func _physics_process(_delta: float) -> void:
+	if (Input.is_action_pressed("unlock_roll")):
+		unlockedRoll = true
 
 	# Get the input direction
 	direction = Input.get_axis("move_left", "move_right")

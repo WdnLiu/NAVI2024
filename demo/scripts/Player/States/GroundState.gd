@@ -8,6 +8,8 @@ class_name GroundState
 @export var attackState : State
 @export var rollState : State
 
+var canRoll : bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -31,7 +33,7 @@ func state_input(event : InputEvent):
 	if (event.is_action_pressed("attack")):
 		attack()
 		
-	if (event.is_action_pressed("roll")):
+	if (event.is_action_pressed("roll") && canRoll && character.unlockedRoll):
 		roll()
 
 func attack():
@@ -41,6 +43,8 @@ func attack():
 func roll():
 	nextState = rollState
 	character.animationTree.set("parameters/conditions/roll", true)
+	$"../../Timers/RollCD".start()
+	canRoll = false
 
 func _process_animation() -> void:
 	
@@ -66,3 +70,7 @@ func onExit() -> void:
 	
 func sound() -> void:
 	jump_sound.play()
+
+
+func _on_roll_cd_timeout() -> void:
+	canRoll = true
