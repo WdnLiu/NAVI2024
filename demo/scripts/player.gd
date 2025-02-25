@@ -21,6 +21,8 @@ const rollSpeed = 600
 func _ready():
 	Global.playerBody = self
 	animationTree.active = true
+	unlockedRoll = false
+	unlockedDoubleJump= false
 
 func _physics_process(_delta: float) -> void:
 	unlockAbilities()

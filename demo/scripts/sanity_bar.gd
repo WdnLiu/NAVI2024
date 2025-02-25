@@ -34,7 +34,7 @@ func update_fill_color():
 
 func _ready() -> void:
 	fill_stylebox = self.get_theme_stylebox("fill")
-	init_sanity(Global.sanity)
+	init_sanity(100)
 
 func _process(_delta: float) -> void:
 	total_frames += 1
