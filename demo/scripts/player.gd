@@ -10,7 +10,7 @@ const SPEED = 200.0
 var moving = 0  # 0 = idle, 1 = running
 var was_on_floor : bool = false
 const acc = 10
-const rollSpeed = 400
+const rollSpeed = 600
 @export var direction : float
 @export var leftFacing : bool = false
 @export var unlockedRoll : bool = false
