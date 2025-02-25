@@ -71,6 +71,5 @@ func onExit() -> void:
 func sound() -> void:
 	jump_sound.play()
 
-
 func _on_roll_cd_timeout() -> void:
 	canRoll = true

@@ -41,7 +41,8 @@ func onExit():
 	
 func onEnter() -> void:
 	character.animationTree.set("parameters/conditions/jump", true)
-	canJump = true
+	if character.unlockedDoubleJump:
+		canJump = true
 	
 func sound() -> void:
 	landing.pitch_scale = randf_range(0.8, 1.2)

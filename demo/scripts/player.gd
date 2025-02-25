@@ -14,6 +14,7 @@ const rollSpeed = 600
 @export var direction : float
 @export var leftFacing : bool = false
 @export var unlockedRoll : bool = false
+@export var unlockedDoubleJump: bool = false
 @export var damageable: bool = true
 @export var hp: int = 1
 
@@ -22,9 +23,7 @@ func _ready():
 	animationTree.active = true
 
 func _physics_process(_delta: float) -> void:
-	if (Input.is_action_pressed("unlock_roll")):
-		unlockedRoll = true
-
+	unlockAbilities()
 	# Get the input direction
 	direction = Input.get_axis("move_left", "move_right")
 
@@ -62,3 +61,9 @@ func getDirectionSign() -> int:
 	
 func isDead() -> bool:
 	return hp <= 0
+	
+func unlockAbilities() -> void:
+	if Global.sanity <= 70 or Input.is_action_pressed("unlock_roll"):
+		unlockedRoll = true
+	if Global.sanity <= 90 or Input.is_action_pressed("unlock_jump"):
+		unlockedDoubleJump = true
