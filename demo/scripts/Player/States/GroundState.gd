@@ -1,9 +1,14 @@
 extends State
 class_name GroundState
+
+@onready var jump_sound: AudioStreamPlayer = $"../../Sounds/JumpSound"
+
 @export var jumpSpeed : float = -350
 @export var airState : State
 @export var attackState : State
-@onready var jump_sound: AudioStreamPlayer = $"../../Sounds/JumpSound"
+@export var rollState : State
+
+var canRoll : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func stateProcess(_delta: float) -> void:
-	if ( not character.is_on_floor()):
+	if (not character.is_on_floor()):
 		nextState = airState
 		
 	_process_animation()
@@ -27,10 +32,19 @@ func state_input(event : InputEvent):
 		nextState = airState
 	if (event.is_action_pressed("attack")):
 		attack()
+		
+	if (event.is_action_pressed("roll") && canRoll && character.unlockedRoll):
+		roll()
 
 func attack():
 	nextState = attackState
 	character.animationTree.set("parameters/conditions/attack", true)
+
+func roll():
+	nextState = rollState
+	character.animationTree.set("parameters/conditions/roll", true)
+	$"../../Timers/RollCD".start()
+	canRoll = false
 
 func _process_animation() -> void:
 	
@@ -56,3 +70,6 @@ func onExit() -> void:
 	
 func sound() -> void:
 	jump_sound.play()
+
+func _on_roll_cd_timeout() -> void:
+	canRoll = true

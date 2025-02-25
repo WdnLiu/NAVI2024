@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animatedSprite : Sprite2D = $Sprite2D
 @onready var animationTree : AnimationTree = $AnimationTree
@@ -9,15 +10,22 @@ const SPEED = 200.0
 var moving = 0  # 0 = idle, 1 = running
 var was_on_floor : bool = false
 const acc = 10
+const rollSpeed = 600
 @export var direction : float
 @export var leftFacing : bool = false
+@export var unlockedRoll : bool = false
+@export var unlockedDoubleJump: bool = false
+@export var damageable: bool = true
+@export var hp: int = 1
 
 func _ready():
 	Global.playerBody = self
 	animationTree.active = true
+	unlockedRoll = false
+	unlockedDoubleJump= false
 
 func _physics_process(_delta: float) -> void:
-
+	unlockAbilities()
 	# Get the input direction
 	direction = Input.get_axis("move_left", "move_right")
 
@@ -29,7 +37,9 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = 0  # Hard stop before changing direction in ALL states
 		
 	# Set horizontal velocity
-	if direction != 0 && stateMachine.checkCanMove():
+	if (stateMachine.currentState.name == "Roll"):
+		pass
+	elif direction != 0 && stateMachine.checkCanMove():
 		velocity.x = min(abs(velocity.x + direction * acc), SPEED) * direction
 	else:
 		velocity.x = 0
@@ -37,11 +47,25 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
-func update_facing_direction():
+func update_facing_direction() -> void:
 	if direction < 0:
 		animatedSprite.flip_h = true
 		leftFacing = true
 	elif direction > 0:
 		animatedSprite.flip_h = false
 		leftFacing = false
+		
+func getDirectionSign() -> int:
+	if (leftFacing):
+		return -1
+	else:
+		return 1
 	
+func isDead() -> bool:
+	return hp <= 0
+	
+func unlockAbilities() -> void:
+	if Global.sanity <= 70 or Input.is_action_pressed("unlock_roll"):
+		unlockedRoll = true
+	if Global.sanity <= 90 or Input.is_action_pressed("unlock_jump"):
+		unlockedDoubleJump = true

@@ -10942,4 +10942,3 @@ layer_0/tile_data = PackedInt32Array(10878804, 1, 15, -851983, 655445, 10, -7864
 [node name="BG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_5oajh")
 autoplay = true
-bus = &"Background"

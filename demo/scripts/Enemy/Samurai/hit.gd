@@ -24,7 +24,7 @@ func onEnter() -> void:
 	hit.play()
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	if (character.health == 0):
+	if (character.health <= 0):
 		character.queue_free()
 	
 	if (anim_name == "hurt"):

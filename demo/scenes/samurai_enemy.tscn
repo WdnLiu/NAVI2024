@@ -387,7 +387,6 @@ stateMachine = NodePath("../EnemyStateMachine")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("12_k8ast")
-bus = &"SFX"
 
 [connection signal="enemyHurt" from="." to="EnemyStateMachine/Ground" method="_on_samurai_enemy_enemy_hurt"]
 [connection signal="animation_finished" from="AnimationTree" to="EnemyStateMachine/Hit" method="_on_animation_tree_animation_finished"]

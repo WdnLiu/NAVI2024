@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=3 uid="uid://buwqq0fbfmxam"]
+[gd_scene load_steps=159 format=3 uid="uid://buwqq0fbfmxam"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_md3o7"]
 [ext_resource type="Texture2D" uid="uid://cwe4wgewhc0uw" path="res://assets/sprites/Player/Idle/spr_casual_idle_0.png" id="2_4sdoa"]
@@ -53,8 +53,10 @@
 [ext_resource type="Script" path="res://scripts/Player/States/GroundState.gd" id="49_v0ov8"]
 [ext_resource type="Script" path="res://scripts/Player/States/AirState.gd" id="50_54oor"]
 [ext_resource type="Texture2D" uid="uid://bcoqqmqmdh5kl" path="res://assets/sprites/Player/Jump/spr_jump_0-sheet.png" id="50_bke5d"]
+[ext_resource type="Texture2D" uid="uid://b4tiaqvjropmw" path="res://assets/sprites/Player/Roll/roll_1-sheet.png" id="51_eris6"]
 [ext_resource type="Script" path="res://testing/playerLabel.gd" id="52_3dpwa"]
 [ext_resource type="Script" path="res://scripts/Player/States/AttackState.gd" id="54_squtv"]
+[ext_resource type="Script" path="res://scripts/Player/States/RollState.gd" id="56_lsqlc"]
 [ext_resource type="Script" path="res://scripts/Abilities/Player/player_abilities_component.gd" id="57_xmrqt"]
 [ext_resource type="Script" path="res://scripts/Abilities/Player/SlashUse.gd" id="58_x53pq"]
 [ext_resource type="PackedScene" uid="uid://y0qs7l6ofywr" path="res://scenes/slash.tscn" id="59_5rra8"]
@@ -620,6 +622,47 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_60f8a"]
+resource_name = "rolling"
+length = 0.3
+step = 0.0429
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("51_eris6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0429, 0.0858, 0.1287, 0.1716, 0.2145, 0.2574),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
 [sub_resource type="Animation" id="Animation_f4c6y"]
 resource_name = "run"
 length = 0.9
@@ -710,6 +753,7 @@ _data = {
 "idle": SubResource("Animation_tdent"),
 "idle_to_run": SubResource("Animation_hiyac"),
 "jump": SubResource("Animation_vyttu"),
+"rolling": SubResource("Animation_60f8a"),
 "run": SubResource("Animation_f4c6y"),
 "run_to_idle": SubResource("Animation_fxxue")
 }
@@ -743,6 +787,9 @@ animation = &"jump"
 blend_point_0/node = SubResource("AnimationNodeAnimation_42c5v")
 blend_point_0/pos = 0.0
 blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w7cb0"]
+animation = &"rolling"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_by0by"]
 animation = &"run"
@@ -829,6 +876,26 @@ advance_condition = &"attack"
 advance_mode = 2
 advance_condition = &"finishAttack"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_irumy"]
+advance_mode = 2
+advance_condition = &"finishRoll"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0dhd6"]
+advance_mode = 2
+advance_condition = &"roll"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uyop6"]
+advance_mode = 2
+advance_condition = &"roll"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_336lg"]
+advance_mode = 2
+advance_condition = &"roll"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2im6g"]
+advance_mode = 2
+advance_condition = &"roll"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uxfkc"]
 states/Attack/node = SubResource("AnimationNodeBlendSpace1D_jjlox")
 states/Attack/position = Vector2(717, 74.8594)
@@ -839,13 +906,15 @@ states/IdleToRun/node = SubResource("AnimationNodeBlendSpace1D_ilink")
 states/IdleToRun/position = Vector2(978, 147)
 states/Jump/node = SubResource("AnimationNodeBlendSpace1D_u5lcv")
 states/Jump/position = Vector2(486, 283)
+states/Rolling/node = SubResource("AnimationNodeAnimation_w7cb0")
+states/Rolling/position = Vector2(833.061, 35.8594)
 states/Run/node = SubResource("AnimationNodeBlendSpace1D_1h0n7")
 states/Run/position = Vector2(978, 283)
 states/RunToIdle/node = SubResource("AnimationNodeBlendSpace1D_gecvq")
 states/RunToIdle/position = Vector2(733, 206)
 states/Start/position = Vector2(324, 147)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_8mk6x"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_mn76h"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_s5i0d"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_qsgo3"), "Idle", "IdleToRun", SubResource("AnimationNodeStateMachineTransition_pfk0y"), "IdleToRun", "Run", SubResource("AnimationNodeStateMachineTransition_rffed"), "RunToIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_poair"), "Run", "RunToIdle", SubResource("AnimationNodeStateMachineTransition_0xb3d"), "RunToIdle", "Jump", SubResource("AnimationNodeStateMachineTransition_0b55f"), "IdleToRun", "Jump", SubResource("AnimationNodeStateMachineTransition_gat5f"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_hu4hw"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_13re6"), "IdleToRun", "Attack", SubResource("AnimationNodeStateMachineTransition_wle44"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_va1gj"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_07oep")]
-graph_offset = Vector2(-80, 7.8594)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_8mk6x"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_mn76h"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_s5i0d"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_qsgo3"), "Idle", "IdleToRun", SubResource("AnimationNodeStateMachineTransition_pfk0y"), "IdleToRun", "Run", SubResource("AnimationNodeStateMachineTransition_rffed"), "RunToIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_poair"), "Run", "RunToIdle", SubResource("AnimationNodeStateMachineTransition_0xb3d"), "RunToIdle", "Jump", SubResource("AnimationNodeStateMachineTransition_0b55f"), "IdleToRun", "Jump", SubResource("AnimationNodeStateMachineTransition_gat5f"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_hu4hw"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_13re6"), "IdleToRun", "Attack", SubResource("AnimationNodeStateMachineTransition_wle44"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_va1gj"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_07oep"), "Rolling", "RunToIdle", SubResource("AnimationNodeStateMachineTransition_irumy"), "Idle", "Rolling", SubResource("AnimationNodeStateMachineTransition_0dhd6"), "IdleToRun", "Rolling", SubResource("AnimationNodeStateMachineTransition_uyop6"), "Run", "Rolling", SubResource("AnimationNodeStateMachineTransition_336lg"), "RunToIdle", "Rolling", SubResource("AnimationNodeStateMachineTransition_2im6g")]
+graph_offset = Vector2(-170.939, -10.2503)
 
 [sub_resource type="Resource" id="Resource_tbd53"]
 script = ExtResource("58_x53pq")
@@ -879,8 +948,10 @@ tree_root = SubResource("AnimationNodeStateMachine_uxfkc")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/attack = false
 parameters/conditions/finishAttack = false
+parameters/conditions/finishRoll = false
 parameters/conditions/idle = false
 parameters/conditions/jump = false
+parameters/conditions/roll = false
 parameters/conditions/run = false
 parameters/Attack/blend_position = -0.00404042
 parameters/Idle/blend_position = 0.00404036
@@ -894,10 +965,11 @@ script = ExtResource("48_kco1h")
 character = NodePath("..")
 currentState = NodePath("Air")
 
-[node name="Ground" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("airState", "attackState")]
+[node name="Ground" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("airState", "attackState", "rollState")]
 script = ExtResource("49_v0ov8")
 airState = NodePath("../Air")
 attackState = NodePath("../Attack")
+rollState = NodePath("../Roll")
 
 [node name="Air" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("groundState")]
 script = ExtResource("50_54oor")
@@ -907,8 +979,11 @@ groundState = NodePath("../Ground")
 script = ExtResource("54_squtv")
 groundState = NodePath("../Ground")
 
+[node name="Roll" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("groundState")]
+script = ExtResource("56_lsqlc")
+groundState = NodePath("../Ground")
+
 [node name="Label" type="Label" parent="." node_paths=PackedStringArray("stateMachine")]
-visible = false
 offset_left = -40.0
 offset_top = -40.0
 offset_right = 40.0
@@ -921,6 +996,9 @@ stateMachine = NodePath("../CharacterStateMachine")
 
 [node name="CoyoteTimer" type="Timer" parent="Timers"]
 
+[node name="RollCD" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="PlayerAbilitiesComponent" type="Node" parent="." node_paths=PackedStringArray("user")]
 script = ExtResource("57_xmrqt")
 ability = SubResource("Resource_tbd53")
@@ -931,19 +1009,17 @@ user = NodePath("..")
 [node name="Landing" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("62_lmq4i")
 volume_db = 8.0
-bus = &"SFX"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("61_8krhh")
-bus = &"SFX"
 
 [node name="SwordA" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("59_fb30r")
-bus = &"SFX"
 
 [node name="SwordB" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("60_5vwfg")
-bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Roll" method="_on_animation_tree_animation_finished"]
 [connection signal="startingSlash" from="CharacterStateMachine/Attack" to="PlayerAbilitiesComponent" method="_on_attack_starting_slash"]
+[connection signal="timeout" from="Timers/RollCD" to="CharacterStateMachine/Ground" method="_on_roll_cd_timeout"]

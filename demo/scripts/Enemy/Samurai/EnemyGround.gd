@@ -78,14 +78,10 @@ func update_warning_pos() -> void:
 	character.warning.position.x = character.initial_warning_pos * -character.direction 
 
 func update_and_move() -> void:
-	if !character.dead:
-		if !character.chasing:
-			patrol()
-		elif character.chasing and character.player:
-			chase()
-			
-	elif character.dead:
-		character.velocity.x = 0
+	if !character.chasing:
+		patrol()
+	elif character.chasing and character.player:
+		chase()
 
 func chase() -> void:
 	var dir_to_player = (character.player.position - character.position).normalized()
