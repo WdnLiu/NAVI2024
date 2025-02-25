@@ -3,6 +3,7 @@ class_name CharacterStateMachine
 
 @export var character : CharacterBody2D
 @export var currentState : State
+@export var deathState: State
 var states : Array[State]
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +25,9 @@ func _physics_process(delta: float) -> void:
 	currentState.stateProcess(delta)
 
 func switchStates(newState : State):
+	if (character.isDead()):
+		newState = deathState
+	
 	if (currentState != null):
 		currentState.onExit()
 		currentState.nextState = null

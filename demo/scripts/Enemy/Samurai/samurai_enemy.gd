@@ -13,7 +13,6 @@ var moving = 0  # 0 = idle, 1 = running
 const acc = 5
 var direction : float
 var chasing = false
-var dead = false
 var initial_warning_pos : float = -7 # Set to this value to fit in the middle of the running animation
 var player: CharacterBody2D # Information of the player to check its position
 var player_in_are = false
