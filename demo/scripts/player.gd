@@ -11,6 +11,8 @@ var moving = 0  # 0 = idle, 1 = running
 var was_on_floor : bool = false
 const acc = 10
 const rollSpeed = 600
+var onCall : bool = false
+var callId : int = 1
 @export var direction : float
 @export var leftFacing : bool = false
 @export var unlockedRoll : bool = false
@@ -37,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = 0  # Hard stop before changing direction in ALL states
 		
 	# Set horizontal velocity
-	if (stateMachine.currentState.name == "Roll"):
+	if (stateMachine.currentState.name == "Roll" or onCall):
 		pass
 	elif direction != 0 && stateMachine.checkCanMove():
 		velocity.x = min(abs(velocity.x + direction * acc), SPEED) * direction
