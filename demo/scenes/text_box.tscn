@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cr55mwyqnui7c" path="res://assets/text-box.png" id="1_q1541"]
 
 [node name="TextBox" type="MarginContainer"]
+z_index = 50
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_ddx3j")

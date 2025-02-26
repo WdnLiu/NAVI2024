@@ -10945,5 +10945,5 @@ stream = ExtResource("11_5oajh")
 autoplay = true
 
 [node name="NPC" parent="." instance=ExtResource("12_ymjbl")]
-z_index = 10
+z_index = 15
 position = Vector2(3834, 317)

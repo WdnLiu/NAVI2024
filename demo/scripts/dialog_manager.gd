@@ -21,7 +21,7 @@ func start_dialog(position:Vector2, lines: Array[String]):
 	text_box_position = position
 	_show_text_box()
 	
-	is_dialog_active = false
+	is_dialog_active = true
 
 func _show_text_box():
 	text_box = text_box_scene.instantiate()

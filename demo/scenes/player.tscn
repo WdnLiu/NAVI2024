@@ -983,14 +983,13 @@ groundState = NodePath("../Ground")
 script = ExtResource("56_lsqlc")
 groundState = NodePath("../Ground")
 
-[node name="Label" type="Label" parent="." node_paths=PackedStringArray("stateMachine")]
+[node name="Label" type="Label" parent="."]
 offset_left = -40.0
 offset_top = -40.0
 offset_right = 40.0
 offset_bottom = -17.0
 text = "State: "
 script = ExtResource("52_3dpwa")
-stateMachine = NodePath("../CharacterStateMachine")
 
 [node name="Timers" type="Node" parent="."]
 
