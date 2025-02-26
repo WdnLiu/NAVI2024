@@ -8,16 +8,20 @@ var light_purple = Color("#CC99FF")  # Light purple
 var fill_stylebox: StyleBox
 var total_frames = 0
 
+var local_sanity: set = _set_sanity
+
 func _set_sanity(new_sanity):
 	var prev_sanity = Global.sanity
 	Global.sanity = min(max_value, new_sanity)
 	value = Global.sanity
+	local_sanity = Global.sanity
 
 	if Global.sanity <= 0:
 		get_tree().reload_current_scene()
 
 	if Global.sanity < prev_sanity:
 		timer.start()
+		visible = true
 
 	update_fill_color()
 
@@ -25,6 +29,7 @@ func init_sanity(_sanity):
 	Global.sanity = _sanity
 	max_value = _sanity
 	value = _sanity
+	local_sanity = _sanity
 	change_bar.max_value = _sanity
 	change_bar.value = _sanity
 
@@ -35,11 +40,8 @@ func update_fill_color():
 func _ready() -> void:
 	fill_stylebox = self.get_theme_stylebox("fill")
 	init_sanity(100)
-
-func _process(_delta: float) -> void:
-	total_frames += 1
-	if int(total_frames) % 60 == 0:
-		_set_sanity(Global.sanity - 1)
+	visible = false
 
 func _on_timer_timeout() -> void:
 	change_bar.value = Global.sanity
+	visible = false
