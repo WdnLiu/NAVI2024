@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dllidwncsvj47"]
+[gd_scene load_steps=38 format=3 uid="uid://dllidwncsvj47"]
 
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_1wppv"]
 [ext_resource type="PackedScene" uid="uid://buwqq0fbfmxam" path="res://scenes/player.tscn" id="2_v3p2n"]
@@ -13,7 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://3fb3petumvxu" path="res://assets/music/Troubling News.wav" id="11_5oajh"]
 [ext_resource type="PackedScene" uid="uid://cxnpkie4x856r" path="res://scenes/platform.tscn" id="12_3vn4a"]
 [ext_resource type="PackedScene" uid="uid://bfiud6uerk7se" path="res://scenes/moving_platform.tscn" id="12_7h14k"]
-[ext_resource type="PackedScene" uid="uid://cfqben4p3e4gm" path="res://scenes/call_1.tscn" id="14_y18ee"]
+[ext_resource type="PackedScene" uid="uid://cfqben4p3e4gm" path="res://scenes/call1.tscn" id="14_y18ee"]
+[ext_resource type="PackedScene" uid="uid://d1wds07d4k88" path="res://scenes/call2.tscn" id="15_olt14"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5mqwc"]
 
@@ -11006,7 +11007,7 @@ shape = SubResource("WorldBoundaryShape2D_5mqwc")
 [node name="Player" parent="." instance=ExtResource("2_v3p2n")]
 z_index = 20
 z_as_relative = false
-position = Vector2(3688, -68)
+position = Vector2(0, -82)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(2, -11)
@@ -11191,10 +11192,12 @@ autoplay = "move_up"
 
 [node name="BG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_5oajh")
-volume_db = -25.0
 autoplay = true
 
 [node name="Calls" type="Node" parent="."]
 
 [node name="Call1" parent="Calls" instance=ExtResource("14_y18ee")]
-position = Vector2(3594, 334)
+position = Vector2(3580, 243)
+
+[node name="Call2" parent="Calls" instance=ExtResource("15_olt14")]
+position = Vector2(1892, -290)

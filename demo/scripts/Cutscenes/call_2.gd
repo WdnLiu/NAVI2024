@@ -20,12 +20,12 @@ func _process(delta: float) -> void:
 			typing.pitch_scale = randf_range(0.8, 1.2)
 			typing.play()
 		visible_characters = rich_text_label.visible_characters
-	if !animation_player.is_playing() and player.callId == 2:
+	if !animation_player.is_playing() and player.callId == 3:
 		player.onCall = false
 		bg.stop()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == Global.playerBody and player.callId == 1:
+	if body == Global.playerBody and player.callId == 2:
 		bg.play()
 		animation_player.play("call1")
 		player.onCall = true

@@ -18,23 +18,24 @@ func _ready() -> void:
 func stateProcess(_delta: float) -> void:
 	if (not character.is_on_floor()):
 		nextState = airState
-		
-	_process_animation()
+	if (!character.onCall):
+		_process_animation()
 	
 func jump():
 	sound()
 	character.velocity.y = jumpSpeed
 
 func state_input(event : InputEvent):
-	if (event.is_action_pressed("jump")):
-		jump()
-		
-		nextState = airState
-	if (event.is_action_pressed("attack")):
-		attack()
-		
-	if (event.is_action_pressed("roll") && canRoll && character.unlockedRoll):
-		roll()
+	if (!character.onCall):
+		if (event.is_action_pressed("jump")):
+			jump()
+			
+			nextState = airState
+		if (event.is_action_pressed("attack")):
+			attack()
+			
+		if (event.is_action_pressed("roll") && canRoll && character.unlockedRoll):
+			roll()
 
 func attack():
 	nextState = attackState
