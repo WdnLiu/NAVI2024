@@ -20,7 +20,6 @@ func stateProcess(_delta: float) -> void:
 	update_and_move()
 	## Check if the enemy is about to fall
 	platform_edge()
-	update_warning_pos()
 	_process_animation()
 	
 func jump():
@@ -73,9 +72,6 @@ func platform_edge() -> void:
 			character.direction *= -1
 			raycast.position.x *= -1
 			character.velocity.x = 0
-
-func update_warning_pos() -> void:
-	character.warning.position.x = character.initial_warning_pos * -character.direction 
 
 func update_and_move() -> void:
 	if !character.chasing:
