@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dllidwncsvj47"]
+[gd_scene load_steps=39 format=3 uid="uid://dllidwncsvj47"]
 
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_1wppv"]
 [ext_resource type="PackedScene" uid="uid://buwqq0fbfmxam" path="res://scenes/player.tscn" id="2_v3p2n"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bfiud6uerk7se" path="res://scenes/moving_platform.tscn" id="12_7h14k"]
 [ext_resource type="PackedScene" uid="uid://cfqben4p3e4gm" path="res://scenes/call1.tscn" id="14_y18ee"]
 [ext_resource type="PackedScene" uid="uid://d1wds07d4k88" path="res://scenes/call2.tscn" id="15_olt14"]
+[ext_resource type="PackedScene" uid="uid://cutsc8f5rvl3i" path="res://scenes/npc.tscn" id="16_02luy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5mqwc"]
 
@@ -11201,3 +11202,8 @@ position = Vector2(3580, 243)
 
 [node name="Call2" parent="Calls" instance=ExtResource("15_olt14")]
 position = Vector2(1892, -290)
+
+[node name="NPC" parent="." instance=ExtResource("16_02luy")]
+z_index = 15
+position = Vector2(3779, 314)
+scale = Vector2(1.2, 1.2)
