@@ -11207,7 +11207,3 @@ position = Vector2(1892, -290)
 z_index = 15
 position = Vector2(3779, 314)
 scale = Vector2(1.2, 1.2)
-
-[node name="NPC2" parent="." instance=ExtResource("16_02luy")]
-z_index = 60
-position = Vector2(25, -38)
