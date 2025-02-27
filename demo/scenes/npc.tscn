@@ -110,6 +110,7 @@ radius = 54.7449
 script = ExtResource("1_0ulbu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_kwcsr")
 animation = &"idle"
 autoplay = "idle"
