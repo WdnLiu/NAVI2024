@@ -67,7 +67,7 @@ func isDead() -> bool:
 	return hp <= 0
 	
 func unlockAbilities() -> void:
-	if Global.sanity <= 70 or Input.is_action_pressed("unlock_roll"):
+	if Global.sanity <= 0 or Input.is_action_pressed("unlock_roll"):
 		unlockedRoll = true
-	if Global.sanity <= 90 or Input.is_action_pressed("unlock_jump"):
+	if Global.sanity <= 50 or Input.is_action_pressed("unlock_jump"):
 		unlockedDoubleJump = true
