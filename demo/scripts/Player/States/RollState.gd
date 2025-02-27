@@ -16,7 +16,7 @@ func stateProcess(delta : float):
 func onEnter() -> void:
 	character.animationTree.set("parameters/conditions/finishRoll", false)
 	character.damageable = false
-	character.velocity.x += 100*character.getDirectionSign()
+	character.velocity.x = (character.SPEED + 100) *character.getDirectionSign()
 
 func onExit() -> void:
 	character.damageable = true
