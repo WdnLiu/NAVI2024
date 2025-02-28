@@ -1,8 +1,8 @@
 extends Node2D
+@onready var animation_tree: AnimationTree = $AnimationTree
 @export var autoplay : bool = false
 @export var next_scene : PackedScene
 @onready var typing: AudioStreamPlayer = $Sounds/Typing
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var visible_characters = 0
 @onready var rich_text_label: RichTextLabel = $UI/Panel/VBoxContainer/RichTextLabel
