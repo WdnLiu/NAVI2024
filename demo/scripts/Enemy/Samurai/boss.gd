@@ -4,10 +4,11 @@ extends Enemy
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var vision_area: Area2D = $Vision_area
 @onready var warning: AnimatedSprite2D = $Warning
+@export var ending1 : PackedScene
 
 signal enemyHurt
 
-const SPEED = 150.0
+const SPEED = 175.0
 
 var moving = 0  # 0 = idle, 1 = running
 const acc = 5
@@ -59,3 +60,6 @@ func _on_player_exited(body):
 func hit(damage: int, knockback: Vector2) -> void:
 	super.hit(damage, knockback)
 	emit_signal("enemyHurt")
+
+func change_scene():
+	get_tree().change_scene_to_packed(ending1)
