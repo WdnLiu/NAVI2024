@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var animationTree : AnimationTree = $AnimationTree
 @onready var stateMachine: CharacterStateMachine = $CharacterStateMachine
 @export var ending1 : PackedScene
-# @export var ending2 : PackedScene
+@export var ending2 : PackedScene
 
 const SPEED = 200.0
 
@@ -30,6 +30,8 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ending1"):
 		change_scene(ending1)
+	if event.is_action_pressed("ending2"):
+		change_scene(ending2)
 
 func _physics_process(_delta: float) -> void:
 	unlockAbilities()
