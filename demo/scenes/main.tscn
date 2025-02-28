@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dllidwncsvj47"]
+[gd_scene load_steps=40 format=3 uid="uid://dllidwncsvj47"]
 
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_1wppv"]
 [ext_resource type="PackedScene" uid="uid://buwqq0fbfmxam" path="res://scenes/player.tscn" id="2_v3p2n"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vtf13ivytbqr" path="res://scenes/killzone.tscn" id="3_qgdui"]
 [ext_resource type="Texture2D" uid="uid://roodaiuwac4l" path="res://assets/sprites/Bg/objects.png" id="6_2s634"]
 [ext_resource type="PackedScene" uid="uid://dhl46pbejbd1f" path="res://scenes/sanity_bar.tscn" id="6_b08l0"]
+[ext_resource type="PackedScene" uid="uid://dfux6osd51vh4" path="res://scenes/boss.tscn" id="6_l0vyu"]
 [ext_resource type="Texture2D" uid="uid://cpd7pflt4m3es" path="res://assets/sprites/Bg/rocky-nowater-demo.png" id="7_15kgj"]
 [ext_resource type="Texture2D" uid="uid://bo72g2hyi0i3l" path="res://assets/sprites/Bg/5.png" id="8_hsowu"]
 [ext_resource type="Texture2D" uid="uid://d32hoyjrqsqoo" path="res://assets/sprites/Bg/4.png" id="9_vcvmx"]
@@ -10996,6 +10997,7 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
+position = Vector2(1, 4)
 script = ExtResource("1_1wppv")
 
 [node name="killzone" parent="." instance=ExtResource("3_qgdui")]
@@ -11063,9 +11065,9 @@ position = Vector2(4360, 34)
 z_index = 5
 position = Vector2(4437, 44)
 
-[node name="Samurai enemy9" parent="Enemies" instance=ExtResource("2_yrbna")]
+[node name="Boss" parent="Enemies" instance=ExtResource("6_l0vyu")]
 z_index = 5
-position = Vector2(4321, -375)
+position = Vector2(4270, -359)
 
 [node name="Enviroment" type="Node" parent="."]
 
@@ -11190,6 +11192,10 @@ libraries = {
 "": SubResource("AnimationLibrary_2jwur")
 }
 autoplay = "move_up"
+
+[node name="Platform19" parent="Enviroment" instance=ExtResource("12_3vn4a")]
+z_index = 2
+position = Vector2(4399, -207)
 
 [node name="BG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_5oajh")

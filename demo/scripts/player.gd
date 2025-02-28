@@ -10,7 +10,6 @@ const SPEED = 200.0
 var moving = 0  # 0 = idle, 1 = running
 var was_on_floor : bool = false
 const acc = 10
-const rollSpeed = 600
 var onCall : bool = false
 var callId : int = 1
 @export var direction : float
@@ -67,7 +66,7 @@ func isDead() -> bool:
 	return hp <= 0
 	
 func unlockAbilities() -> void:
-	if Global.sanity <= 70 or Input.is_action_pressed("unlock_roll"):
+	if Global.sanity <= 0 or Input.is_action_pressed("unlock_roll"):
 		unlockedRoll = true
-	if Global.sanity <= 90 or Input.is_action_pressed("unlock_jump"):
+	if Global.sanity <= 50 or Input.is_action_pressed("unlock_jump"):
 		unlockedDoubleJump = true
