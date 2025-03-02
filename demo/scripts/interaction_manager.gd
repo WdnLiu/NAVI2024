@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player: CharacterBody2D = Global.playerBody
-@onready var label: Label = $Label
+@export var label: Label
 
 const base_text = "[E] to "
 

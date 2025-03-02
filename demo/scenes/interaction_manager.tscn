@@ -3,8 +3,9 @@
 [ext_resource type="FontFile" uid="uid://cbv4a3nlb0md1" path="res://assets/fonts/PixelOperator8.ttf" id="1_3x3g4"]
 [ext_resource type="Script" path="res://scripts/interaction_manager.gd" id="1_i6v55"]
 
-[node name="InteractionManager" type="Node2D"]
+[node name="InteractionManager" type="Node2D" node_paths=PackedStringArray("label")]
 script = ExtResource("1_i6v55")
+label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 z_index = 20
