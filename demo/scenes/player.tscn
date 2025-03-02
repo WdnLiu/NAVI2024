@@ -1,6 +1,8 @@
-[gd_scene load_steps=75 format=3 uid="uid://buwqq0fbfmxam"]
+[gd_scene load_steps=77 format=3 uid="uid://buwqq0fbfmxam"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_md3o7"]
+[ext_resource type="PackedScene" uid="uid://bi7i602ffgv1q" path="res://scenes/ending1.tscn" id="2_x3gl8"]
+[ext_resource type="PackedScene" uid="uid://ddhi0tv2d4v1y" path="res://scenes/ending2.tscn" id="3_668tk"]
 [ext_resource type="Texture2D" uid="uid://sgjeqcwmfnql" path="res://assets/sprites/Player/Idle/spr_casual_idle_0-sheet.png" id="3_piqfu"]
 [ext_resource type="PackedScene" uid="uid://fblabb2gvbo1" path="res://scenes/samurai_enemy.tscn" id="18_ujasb"]
 [ext_resource type="Script" path="res://scripts/Abilities/Player/EnemySpawner.gd" id="18_v47ub"]
@@ -542,6 +544,8 @@ deathScene = ExtResource("20_gf6lf")
 z_index = 100
 collision_layer = 2
 script = ExtResource("1_md3o7")
+ending1 = ExtResource("2_x3gl8")
+ending2 = ExtResource("3_668tk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

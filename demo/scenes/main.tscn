@@ -1,12 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://dllidwncsvj47"]
+[gd_scene load_steps=40 format=3 uid="uid://dllidwncsvj47"]
 
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_1wppv"]
-[ext_resource type="PackedScene" uid="uid://bi7i602ffgv1q" path="res://scenes/ending1.tscn" id="2_fj32o"]
 [ext_resource type="PackedScene" uid="uid://buwqq0fbfmxam" path="res://scenes/player.tscn" id="2_v3p2n"]
 [ext_resource type="PackedScene" uid="uid://fblabb2gvbo1" path="res://scenes/samurai_enemy.tscn" id="2_yrbna"]
-[ext_resource type="PackedScene" uid="uid://ddhi0tv2d4v1y" path="res://scenes/ending2.tscn" id="3_71v41"]
 [ext_resource type="PackedScene" uid="uid://vtf13ivytbqr" path="res://scenes/killzone.tscn" id="3_qgdui"]
-[ext_resource type="PackedScene" uid="uid://brogrdit85ndk" path="res://scenes/initial_cutscene.tscn" id="4_ih6dd"]
 [ext_resource type="Texture2D" uid="uid://roodaiuwac4l" path="res://assets/sprites/Bg/objects.png" id="6_2s634"]
 [ext_resource type="PackedScene" uid="uid://dhl46pbejbd1f" path="res://scenes/sanity_bar.tscn" id="6_b08l0"]
 [ext_resource type="PackedScene" uid="uid://dfux6osd51vh4" path="res://scenes/boss.tscn" id="6_l0vyu"]
@@ -11002,9 +10999,6 @@ _data = {
 [node name="Main" type="Node2D"]
 position = Vector2(1, 4)
 script = ExtResource("1_1wppv")
-ending1 = ExtResource("2_fj32o")
-ending2 = ExtResource("3_71v41")
-initialCut = ExtResource("4_ih6dd")
 
 [node name="killzone" parent="." instance=ExtResource("3_qgdui")]
 position = Vector2(-276, 296)

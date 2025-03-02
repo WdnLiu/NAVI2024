@@ -29,11 +29,21 @@ func _ready():
 	unlockedRoll = false
 	unlockedDoubleJump= false
 
+@export var ending1 : PackedScene
+@export var ending2 : PackedScene
+	
+func change_scene(scene : PackedScene):
+	get_tree().change_scene_to_packed(scene)
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("spawn_enemy"):
 		emit_signal("spawn_enemy")
 	if event.is_action_pressed("damage_player"):
 		hp -= 1
+	if event.is_action_pressed("ending1"):
+		change_scene(ending1)
+	if event.is_action_pressed("ending2"):
+		change_scene(ending2)
 
 func _physics_process(_delta: float) -> void:
 	if (isDead):
@@ -92,10 +102,6 @@ func unlockAbilities() -> void:
 		unlockedRoll = true
 	if Global.sanity <= 50 or Input.is_action_pressed("unlock_jump"):
 		unlockedDoubleJump = true
-
-func change_scene(scene : PackedScene):
-	get_tree().change_scene_to_packed(scene)
-
 
 func _on_death_timer_timeout() -> void:
 	TransitionScene.transition()
