@@ -11011,6 +11011,12 @@ shape = SubResource("WorldBoundaryShape2D_5mqwc")
 z_index = 20
 z_as_relative = false
 position = Vector2(0, -82)
+direction = 0.0
+leftFacing = false
+unlockedRoll = false
+unlockedDoubleJump = false
+damageable = true
+hp = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(2, -11)
@@ -11051,11 +11057,11 @@ position = Vector2(2800, -76)
 
 [node name="Samurai enemy5" parent="Enemies" instance=ExtResource("2_yrbna")]
 z_index = 5
-position = Vector2(4169, 40)
+position = Vector2(4330, 38)
 
 [node name="Samurai enemy6" parent="Enemies" instance=ExtResource("2_yrbna")]
 z_index = 5
-position = Vector2(4249, 45)
+position = Vector2(4460, 42)
 
 [node name="Samurai enemy7" parent="Enemies" instance=ExtResource("2_yrbna")]
 z_index = 5

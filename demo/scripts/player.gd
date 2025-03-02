@@ -1,17 +1,19 @@
 extends CharacterBody2D
 
+@export var ending1 : PackedScene
+@export var ending2 : PackedScene
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animatedSprite : Sprite2D = $Sprite2D
 @onready var animationTree : AnimationTree = $AnimationTree
 @onready var stateMachine: CharacterStateMachine = $CharacterStateMachine
-@export var ending1 : PackedScene
-@export var ending2 : PackedScene
 
 const SPEED = 200.0
+const acc = 10
 
+var offset : Vector2 = Vector2(20, 0)
 var moving = 0  # 0 = idle, 1 = running
 var was_on_floor : bool = false
-const acc = 10
 var onCall : bool = false
 var callId : int = 1
 @export var direction : float
@@ -20,6 +22,8 @@ var callId : int = 1
 @export var unlockedDoubleJump: bool = false
 @export var damageable: bool = true
 @export var hp: int = 1
+
+signal spawn_enemy
 
 func _ready():
 	Global.playerBody = self
@@ -32,6 +36,8 @@ func _input(event: InputEvent) -> void:
 		change_scene(ending1)
 	if event.is_action_pressed("ending2"):
 		change_scene(ending2)
+	if event.is_action_pressed("spawn_enemy"):
+		emit_signal("spawn_enemy")
 
 func _physics_process(_delta: float) -> void:
 	unlockAbilities()
