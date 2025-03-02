@@ -19,6 +19,8 @@ var callId : int = 1
 @export var unlockedDoubleJump: bool = false
 @export var damageable: bool = true
 @export var hp: int = 1
+@export var ending1 : PackedScene
+@export var ending2 : PackedScene
 
 signal spawn_enemy
 signal player_dies
@@ -28,9 +30,6 @@ func _ready():
 	animationTree.active = true
 	unlockedRoll = false
 	unlockedDoubleJump= false
-
-@export var ending1 : PackedScene
-@export var ending2 : PackedScene
 	
 func change_scene(scene : PackedScene):
 	get_tree().change_scene_to_packed(scene)
