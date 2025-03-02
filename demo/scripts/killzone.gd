@@ -7,7 +7,7 @@ func _on_body_entered(_body: Node2D) -> void:
 		print("Player Died")
 		timer.start()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Global.playerBody:
 		player = Global.playerBody
 	else:

@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animatedSprite : Sprite2D = $Sprite2D
 @onready var animationTree : AnimationTree = $AnimationTree
 @onready var stateMachine: CharacterStateMachine = $CharacterStateMachine
@@ -19,11 +18,17 @@ var callId : int = 1
 @export var damageable: bool = true
 @export var hp: int = 1
 
+signal spawn_enemy
+
 func _ready():
 	Global.playerBody = self
 	animationTree.active = true
 	unlockedRoll = false
 	unlockedDoubleJump= false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("spawn_enemy"):
+		emit_signal("spawn_enemy")
 
 func _physics_process(_delta: float) -> void:
 	unlockAbilities()
