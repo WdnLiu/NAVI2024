@@ -13,9 +13,15 @@ func _process(_delta: float) -> void:
 
 func applyDamage():
 	for target in targets:
+		if Global.sanity <= 70:
+			damage *= choose([0.0, 0.0, 1.0, 1.0, 1.0,  1.0,  1.0,  1.0,  1.0,  1.0])
 		target.hit(damage, Vector2(0, 0))
 
 func _on_body_entered(body: Node2D) -> void:
 	if not targets.has(body) && body.canBeHit:
 		targets.append(body)
 	applyDamage()
+
+func choose(array):
+	array.shuffle()
+	return array.front()
