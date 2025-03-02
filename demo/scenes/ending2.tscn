@@ -1,0 +1,306 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddhi0tv2d4v1y"]
+
+[ext_resource type="Script" path="res://scripts/Cutscenes/ending_2.gd" id="1_f5fva"]
+[ext_resource type="FontFile" uid="uid://bqkhcmic8ech5" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_dreb8"]
+[ext_resource type="FontFile" uid="uid://cbv4a3nlb0md1" path="res://assets/fonts/PixelOperator8.ttf" id="4_31cio"]
+[ext_resource type="Texture2D" uid="uid://p2ibmnhdp2w8" path="res://assets/sprites/Initial Cutscene/codec_result.png" id="5_52ley"]
+[ext_resource type="AudioStream" uid="uid://bb2anmbi367ni" path="res://assets/music/Radio Static.wav" id="6_8qc8i"]
+[ext_resource type="AudioStream" uid="uid://t3r4pegibgix" path="res://assets/sounds/typing.wav" id="7_cjsyt"]
+
+[sub_resource type="Animation" id="Animation_n1puy"]
+length = 21.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0666667, 0.0666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Panel/VBoxContainer/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Quail
+", "The Handler
+"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5, 12, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["
+I know what you have done.
+", "
+I knew you'd start questioning things. It was always a matter of time.", "
+I am not expecting you to understand.
+", "
+Goodbye. Quail.
+"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Panel/VBoxContainer/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2, 5, 7, 12, 13, 16, 17),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Panel/VBoxContainer/Label:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2, 5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2, 4, 5, 7, 9, 11, 12, 13, 15, 16, 17, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0, 0.577, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(21),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_scene"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_u5jud"]
+resource_name = "ending1"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Panel/VBoxContainer/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["The Handler"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5.03333, 9.03333, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["
+Good work Quail. Mission accomplished.
+", "
+You've fought well.", "
+Not everyone has the capacity to work like this. Not every one is made for it.", "
+Come back. We have new plans for you.
+"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Panel/VBoxContainer/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 5, 6, 9, 10.0333, 16, 17),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Panel/VBoxContainer/Label:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2, 4, 5.03333, 6.03333, 8, 9, 10.0333, 12, 13, 15, 16, 17, 19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.636, 0.636, 1.0, 1.0, 0.0, 1.0]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(19.9667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_scene"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6b03e"]
+_data = {
+"RESET": SubResource("Animation_n1puy"),
+"ending1": SubResource("Animation_u5jud")
+}
+
+[node name="ending2" type="Node2D"]
+script = ExtResource("1_f5fva")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(1000, 300)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -507.0
+offset_top = -273.0
+offset_right = 493.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
+custom_minimum_size = Vector2(1000, 250)
+layout_mode = 0
+offset_left = -4.0
+offset_right = 996.0
+offset_bottom = 300.0
+
+[node name="Label" type="Label" parent="UI/Panel/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_dreb8")
+theme_override_font_sizes/font_size = 30
+text = "Quail
+"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Panel/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(1000, 220)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_31cio")
+theme_override_fonts/bold_font = ExtResource("3_dreb8")
+theme_override_font_sizes/normal_font_size = 25
+text = "
+I know what you have done.
+"
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(570, 341)
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("5_52ley")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="BG" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_8qc8i")
+autoplay = true
+bus = &"Background"
+
+[node name="Typing" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_cjsyt")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6b03e")
+}
+autoplay = "RESET"
