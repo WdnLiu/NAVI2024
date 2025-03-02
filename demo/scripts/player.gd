@@ -2,13 +2,15 @@ extends CharacterBody2D
 
 @onready var animatedSprite : Sprite2D = $Sprite2D
 @onready var animationTree : AnimationTree = $AnimationTree
-@onready var stateMachine: CharacterStateMachine = $CharacterStateMachine
+@onready var stateMachine : CharacterStateMachine = $CharacterStateMachine
+@onready var deathTimer : Timer = $Timers/DeathTimer
+@onready var isDead : bool = false
 
 const SPEED = 200.0
+const acc = 10
 
 var moving = 0  # 0 = idle, 1 = running
 var was_on_floor : bool = false
-const acc = 10
 var onCall : bool = false
 var callId : int = 1
 @export var direction : float
@@ -19,6 +21,7 @@ var callId : int = 1
 @export var hp: int = 1
 
 signal spawn_enemy
+signal player_dies
 
 func _ready():
 	Global.playerBody = self
@@ -29,8 +32,14 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("spawn_enemy"):
 		emit_signal("spawn_enemy")
+	if event.is_action_pressed("damage_player"):
+		hp -= 1
 
 func _physics_process(_delta: float) -> void:
+	if (isDead):
+		return
+	handleHP()
+		
 	unlockAbilities()
 	# Get the input direction
 	direction = Input.get_axis("move_left", "move_right")
@@ -44,6 +53,10 @@ func _physics_process(_delta: float) -> void:
 		
 	# Set horizontal velocity
 	if (stateMachine.currentState.name == "Roll" or onCall):
+		if(onCall):
+			direction = 0
+			velocity.x = 0
+			move_toward(velocity.x, 0, SPEED)
 		pass
 	elif direction != 0 && stateMachine.checkCanMove():
 		velocity.x = min(abs(velocity.x + direction * acc), SPEED) * direction
@@ -52,6 +65,13 @@ func _physics_process(_delta: float) -> void:
 		move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func handleHP():
+	if (hp <= 0):
+		emit_signal("player_dies")
+		self.visible = false
+		deathTimer.start()
+		isDead = true
 
 func update_facing_direction() -> void:
 	if direction < 0:
@@ -67,11 +87,17 @@ func getDirectionSign() -> int:
 	else:
 		return 1
 	
-func isDead() -> bool:
-	return hp <= 0
-	
 func unlockAbilities() -> void:
 	if Global.sanity <= 0 or Input.is_action_pressed("unlock_roll"):
 		unlockedRoll = true
 	if Global.sanity <= 50 or Input.is_action_pressed("unlock_jump"):
 		unlockedDoubleJump = true
+
+func change_scene(scene : PackedScene):
+	get_tree().change_scene_to_packed(scene)
+
+
+func _on_death_timer_timeout() -> void:
+	TransitionScene.transition()
+	await TransitionScene.on_transition_finished
+	get_tree().reload_current_scene()
