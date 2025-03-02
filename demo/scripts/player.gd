@@ -4,8 +4,6 @@ extends CharacterBody2D
 @onready var animatedSprite : Sprite2D = $Sprite2D
 @onready var animationTree : AnimationTree = $AnimationTree
 @onready var stateMachine: CharacterStateMachine = $CharacterStateMachine
-@export var ending1 : PackedScene
-@export var ending2 : PackedScene
 
 const SPEED = 200.0
 
@@ -27,12 +25,6 @@ func _ready():
 	unlockedRoll = false
 	unlockedDoubleJump= false
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ending1"):
-		change_scene(ending1)
-	if event.is_action_pressed("ending2"):
-		change_scene(ending2)
-
 func _physics_process(_delta: float) -> void:
 	unlockAbilities()
 	# Get the input direction
@@ -47,10 +39,6 @@ func _physics_process(_delta: float) -> void:
 		
 	# Set horizontal velocity
 	if (stateMachine.currentState.name == "Roll" or onCall):
-		if(onCall):
-			direction = 0
-			velocity.x = 0
-			move_toward(velocity.x, 0, SPEED)
 		pass
 	elif direction != 0 && stateMachine.checkCanMove():
 		velocity.x = min(abs(velocity.x + direction * acc), SPEED) * direction
@@ -82,6 +70,3 @@ func unlockAbilities() -> void:
 		unlockedRoll = true
 	if Global.sanity <= 50 or Input.is_action_pressed("unlock_jump"):
 		unlockedDoubleJump = true
-
-func change_scene(scene : PackedScene):
-	get_tree().change_scene_to_packed(scene)
