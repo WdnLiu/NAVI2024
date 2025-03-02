@@ -9,4 +9,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	text = "State: " + str(stateMachine.currentState.name) + " " + str($"../Timers/RollCD".time_left)
+	text = "State: " + str(stateMachine.currentState.name) + " " + str(stateMachine.character.hp)

@@ -31,7 +31,7 @@ func _ready():
 		label.vertical_alignment = 1
 		add_child(label)  # Add the new Label as a child to the InteractionManager
 
-func _process(delta):
+func _process(_delta):
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name

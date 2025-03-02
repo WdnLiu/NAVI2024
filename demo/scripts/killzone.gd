@@ -4,10 +4,9 @@ var player: CharacterBody2D
 
 func _on_body_entered(_body: Node2D) -> void:
 	if player.damageable:
-		print("Player Died")
-		timer.start()
+		player.hp = 0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Global.playerBody:
 		player = Global.playerBody
 	else:

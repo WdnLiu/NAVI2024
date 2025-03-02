@@ -10,7 +10,7 @@ extends Node2D
 var visible_characters = 0
 var player: CharacterBody2D
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Global.playerBody:
 		player = Global.playerBody
 	else:

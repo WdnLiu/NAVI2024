@@ -1,8 +1,12 @@
-[gd_scene load_steps=74 format=3 uid="uid://buwqq0fbfmxam"]
+[gd_scene load_steps=79 format=3 uid="uid://buwqq0fbfmxam"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_md3o7"]
 [ext_resource type="PackedScene" uid="uid://bdeybqikfeo2d" path="res://scenes/ending1.tscn" id="2_vb4xn"]
 [ext_resource type="PackedScene" uid="uid://ddhi0tv2d4v1y" path="res://scenes/ending2.tscn" id="3_pjj2m"]
+[ext_resource type="PackedScene" uid="uid://brogrdit85ndk" path="res://scenes/initial_cutscene.tscn" id="4_dsws6"]
+[ext_resource type="Script" path="res://scripts/Player/States/DeathState.gd" id="16_vcolp"]
+[ext_resource type="Script" path="res://scripts/Abilities/Player/SpawnDeathAnimation.gd" id="22_ck6ki"]
+[ext_resource type="PackedScene" uid="uid://mf1m33bhygxa" path="res://scenes/player_death.tscn" id="22_curew"]
 [ext_resource type="Texture2D" uid="uid://dtnrrbxncmi4b" path="res://assets/sprites/Player/attacking/attack_move/attack_1-sheet.png" id="46_n0umu"]
 [ext_resource type="Texture2D" uid="uid://miu5qxl5vvwj" path="res://assets/sprites/Player/Run/spr_run_0-sheet.png" id="47_3cobb"]
 [ext_resource type="Texture2D" uid="uid://3doepeb7w4x0" path="res://assets/sprites/Player/RunToIdle/spr_run_to_idle_0-sheet.png" id="48_dimng"]
@@ -534,11 +538,16 @@ slashScene = ExtResource("59_5rra8")
 script = ExtResource("65_43o2x")
 samuraiScene = ExtResource("68_2x7vd")
 
+[sub_resource type="Resource" id="Resource_a00hc"]
+script = ExtResource("22_ck6ki")
+deathScene = ExtResource("22_curew")
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_md3o7")
 ending1 = ExtResource("2_vb4xn")
 ending2 = ExtResource("3_pjj2m")
+initialCutScene = ExtResource("4_dsws6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -592,6 +601,10 @@ groundState = NodePath("../Ground")
 script = ExtResource("56_lsqlc")
 groundState = NodePath("../Ground")
 
+[node name="Death" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("16_vcolp")
+canMove = false
+
 [node name="Label" type="Label" parent="." node_paths=PackedStringArray("stateMachine")]
 offset_left = -40.0
 offset_top = -40.0
@@ -608,11 +621,15 @@ stateMachine = NodePath("../CharacterStateMachine")
 [node name="RollCD" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="DeathTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+
 [node name="PlayerAbilitiesComponent" type="Node" parent="." node_paths=PackedStringArray("user")]
 script = ExtResource("57_xmrqt")
 ability = SubResource("Resource_tbd53")
 user = NodePath("..")
 spawn = SubResource("Resource_764ce")
+death = SubResource("Resource_a00hc")
 
 [node name="Sounds" type="Node" parent="."]
 
@@ -629,8 +646,10 @@ stream = ExtResource("59_fb30r")
 [node name="SwordB" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("60_5vwfg")
 
+[connection signal="player_dies" from="." to="PlayerAbilitiesComponent" method="_on_player_player_dies"]
 [connection signal="spawn_enemy" from="." to="PlayerAbilitiesComponent" method="_on_player_spawn_enemy"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Roll" method="_on_animation_tree_animation_finished"]
 [connection signal="startingSlash" from="CharacterStateMachine/Attack" to="PlayerAbilitiesComponent" method="_on_attack_starting_slash"]
 [connection signal="timeout" from="Timers/RollCD" to="CharacterStateMachine/Ground" method="_on_roll_cd_timeout"]
+[connection signal="timeout" from="Timers/DeathTimer" to="." method="_on_death_timer_timeout"]

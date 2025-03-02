@@ -11011,12 +11011,6 @@ shape = SubResource("WorldBoundaryShape2D_5mqwc")
 z_index = 20
 z_as_relative = false
 position = Vector2(0, -82)
-direction = 0.0
-leftFacing = false
-unlockedRoll = false
-unlockedDoubleJump = false
-damageable = true
-hp = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(2, -11)

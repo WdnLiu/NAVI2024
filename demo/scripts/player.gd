@@ -2,16 +2,16 @@ extends CharacterBody2D
 
 @export var ending1 : PackedScene
 @export var ending2 : PackedScene
+@export var initialCutScene : PackedScene
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animatedSprite : Sprite2D = $Sprite2D
 @onready var animationTree : AnimationTree = $AnimationTree
-@onready var stateMachine: CharacterStateMachine = $CharacterStateMachine
+@onready var stateMachine : CharacterStateMachine = $CharacterStateMachine
+@onready var deathTimer : Timer = $Timers/DeathTimer
 
 const SPEED = 200.0
 const acc = 10
 
-var offset : Vector2 = Vector2(20, 0)
 var moving = 0  # 0 = idle, 1 = running
 var was_on_floor : bool = false
 var onCall : bool = false
@@ -24,6 +24,7 @@ var callId : int = 1
 @export var hp: int = 1
 
 signal spawn_enemy
+signal player_dies
 
 func _ready():
 	Global.playerBody = self
@@ -38,8 +39,14 @@ func _input(event: InputEvent) -> void:
 		change_scene(ending2)
 	if event.is_action_pressed("spawn_enemy"):
 		emit_signal("spawn_enemy")
+	if event.is_action("damage_player"):
+		hp -= 1
 
 func _physics_process(_delta: float) -> void:
+	handleHP()
+	if (hp < 0):
+		return
+		
 	unlockAbilities()
 	# Get the input direction
 	direction = Input.get_axis("move_left", "move_right")
@@ -66,6 +73,13 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
+func handleHP():
+	if (hp == 0):
+		emit_signal("player_dies")
+		self.visible = false
+		deathTimer.start()
+		hp -= 1
+
 func update_facing_direction() -> void:
 	if direction < 0:
 		animatedSprite.flip_h = true
@@ -91,3 +105,9 @@ func unlockAbilities() -> void:
 
 func change_scene(scene : PackedScene):
 	get_tree().change_scene_to_packed(scene)
+
+
+func _on_death_timer_timeout() -> void:
+	TransitionScene.transition()
+	await TransitionScene.on_transition_finished
+	get_tree().reload_current_scene()

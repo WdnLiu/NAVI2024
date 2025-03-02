@@ -5,6 +5,7 @@ class_name AirState
 @onready var landing: AudioStreamPlayer = $"../../Sounds/Landing"
 
 @export var jumpSpeed : float = -350
+
 var canJump: bool
 
 # Called when the node enters the scene tree for the first time.

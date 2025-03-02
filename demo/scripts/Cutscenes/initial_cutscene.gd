@@ -2,7 +2,6 @@ extends Node2D
 @export var autoplay : bool = false
 @export var next_scene : PackedScene
 @onready var typing: AudioStreamPlayer = $Sounds/Typing
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var visible_characters = 0
 @onready var rich_text_label: RichTextLabel = $UI/Panel/VBoxContainer/RichTextLabel
@@ -14,7 +13,7 @@ func _input(event):
 func change_scene():
 	get_tree().change_scene_to_packed(next_scene)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if visible_characters != rich_text_label.visible_characters:
 		if visible_characters < rich_text_label.visible_characters and !typing.playing:
 			typing.pitch_scale = randf_range(0.8, 1.2)
