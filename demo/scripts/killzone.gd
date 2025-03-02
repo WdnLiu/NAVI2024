@@ -4,7 +4,7 @@ var player: CharacterBody2D
 
 func _on_body_entered(_body: Node2D) -> void:
 	if player.damageable:
-		player.hp = 0
+		player.hp -= 1
 
 func _process(_delta: float) -> void:
 	if Global.playerBody:

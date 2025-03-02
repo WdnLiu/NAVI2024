@@ -235,8 +235,8 @@ height = 26.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqm7r"]
 size = Vector2(20, 35)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mqtx3"]
-radius = 135.004
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwoe6"]
+size = Vector2(604, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbs0f"]
 atlas = ExtResource("10_xrfjp")
@@ -365,7 +365,8 @@ hit_from_inside = true
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision_area"]
-shape = SubResource("CircleShape2D_mqtx3")
+position = Vector2(1, 15)
+shape = SubResource("RectangleShape2D_qwoe6")
 
 [node name="Warning" type="AnimatedSprite2D" parent="."]
 position = Vector2(-7, -12)

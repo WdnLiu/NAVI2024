@@ -16,6 +16,7 @@ var moving = 0  # 0 = idle, 1 = running
 var was_on_floor : bool = false
 var onCall : bool = false
 var callId : int = 1
+var isDead : bool = false
 @export var direction : float
 @export var leftFacing : bool = false
 @export var unlockedRoll : bool = false
@@ -44,7 +45,7 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(_delta: float) -> void:
 	handleHP()
-	if (hp < 0):
+	if (isDead):
 		return
 		
 	unlockAbilities()
@@ -74,11 +75,11 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func handleHP():
-	if (hp == 0):
+	if (hp <= 0 && !isDead):
 		emit_signal("player_dies")
 		self.visible = false
 		deathTimer.start()
-		hp -= 1
+		isDead = true
 
 func update_facing_direction() -> void:
 	if direction < 0:
@@ -93,9 +94,6 @@ func getDirectionSign() -> int:
 		return -1
 	else:
 		return 1
-	
-func isDead() -> bool:
-	return hp <= 0
 	
 func unlockAbilities() -> void:
 	if Global.sanity <= 0 or Input.is_action_pressed("unlock_roll"):
