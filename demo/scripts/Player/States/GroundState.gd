@@ -16,6 +16,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func stateProcess(_delta: float) -> void:
+	if (character.isDead):
+		return
 	if (not character.is_on_floor()):
 		nextState = airState
 	if (!character.onCall):
@@ -26,6 +28,8 @@ func jump():
 	character.velocity.y = jumpSpeed
 
 func state_input(event : InputEvent):
+	if (character.isDead):
+		return
 	if (!character.onCall):
 		if (event.is_action_pressed("jump")):
 			jump()

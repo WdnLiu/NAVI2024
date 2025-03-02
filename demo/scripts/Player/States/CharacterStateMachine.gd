@@ -25,9 +25,6 @@ func _physics_process(delta: float) -> void:
 	currentState.stateProcess(delta)
 
 func switchStates(newState : State):
-	if (character.isDead()):
-		newState = deathState
-	
 	if (currentState != null):
 		currentState.onExit()
 		currentState.nextState = null

@@ -14,7 +14,7 @@ func _input(event):
 func change_scene():
 	get_tree().change_scene_to_packed(next_scene)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if visible_characters != rich_text_label.visible_characters:
 		if visible_characters < rich_text_label.visible_characters and !typing.playing:
 			typing.pitch_scale = randf_range(0.8, 1.2)
