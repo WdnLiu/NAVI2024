@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg3yvv0mt1u2w"]
+
+[ext_resource type="Script" path="res://scripts/object.gd" id="1_cecfp"]
+[ext_resource type="Texture2D" uid="uid://brrgkv2ji1ven" path="res://assets/sprites/framed-familiy-photo.png" id="1_emlur"]
+[ext_resource type="PackedScene" uid="uid://clofmmwpuc3ur" path="res://scenes/interaction_area.tscn" id="2_ntth8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sipi"]
+radius = 1524.01
+
+[node name="Object" type="Node2D"]
+script = ExtResource("1_cecfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_emlur")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_ntth8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_4sipi")
