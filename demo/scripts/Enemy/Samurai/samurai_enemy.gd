@@ -16,6 +16,7 @@ var chasing = false
 var initial_warning_pos : float = -7 # Set to this value to fit in the middle of the running animation
 var player: CharacterBody2D # Information of the player to check its position
 var player_in_are = false
+@onready var chasing_timer: Timer = $ChasingTimer
 
 func _ready():
 	animationTree.active = true
@@ -48,14 +49,18 @@ func _on_player_entered(body):
 	if body.name == "Player": 
 		chasing = true
 		warning.visible = true
-		print("Player spotted")
 
 func _on_player_exited(body):
 	if body.name == "Player": 
-		chasing = false
-		warning.visible = false
-		print("Lost sight of player")
+		chasing_timer.start()
 		
 func hit(damage: int, knockback: Vector2) -> void:
 	super.hit(damage, knockback)
 	emit_signal("enemyHurt")
+	
+func stop_chasing() -> void:
+	chasing = false
+	warning.visible = false
+	
+func _on_chasing_timer_timeout() -> void:
+	stop_chasing()
