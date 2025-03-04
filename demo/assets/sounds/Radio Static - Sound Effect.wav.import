@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bv3o1qwrrq6p"
-path="res://.godot/imported/Radio Static - Sound Effect.wav-1066d179eb9830b0d42f0fdf3ea005a9.sample"
+path="res://.godot/imported/Radio Static - Sound Effect.wav-84ec2266c64fd9e18ed17aa8042d7c54.sample"
 
 [deps]
 
-source_file="res://scenes/Radio Static - Sound Effect.wav"
-dest_files=["res://.godot/imported/Radio Static - Sound Effect.wav-1066d179eb9830b0d42f0fdf3ea005a9.sample"]
+source_file="res://assets/sounds/Radio Static - Sound Effect.wav"
+dest_files=["res://.godot/imported/Radio Static - Sound Effect.wav-84ec2266c64fd9e18ed17aa8042d7c54.sample"]
 
 [params]
 

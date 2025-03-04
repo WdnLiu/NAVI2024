@@ -16,7 +16,7 @@ func _set_sanity(new_sanity):
 	value = Global.sanity
 	local_sanity = Global.sanity
 
-	if Global.sanity <= 0:
+	if Global.sanity < 0:
 		get_tree().reload_current_scene()
 
 	if Global.sanity < prev_sanity:
