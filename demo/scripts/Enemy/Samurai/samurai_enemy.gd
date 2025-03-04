@@ -49,6 +49,7 @@ func _on_player_entered(body):
 	if body.name == "Player": 
 		chasing = true
 		warning.visible = true
+		chasing_timer.stop()
 
 func _on_player_exited(body):
 	if body.name == "Player": 

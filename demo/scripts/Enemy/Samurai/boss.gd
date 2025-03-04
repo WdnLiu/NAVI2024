@@ -7,7 +7,7 @@ extends Enemy
 
 signal enemyHurt
 
-const SPEED = 150.0
+const SPEED = 175.0
 
 var moving = 0  # 0 = idle, 1 = running
 const acc = 5
